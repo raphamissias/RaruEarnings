@@ -1,0 +1,30 @@
+{
+  "name": "raruearnings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --cls --rs src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/pg": "^8.15.4",
+    "@types/pg-format": "^1.0.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.17.0",
+    "pg": "^8.16.3",
+    "pg-format": "^1.0.4"
+  }
+}

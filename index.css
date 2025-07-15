@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom, #2E335A, #1C1B33);
+    padding: 20px;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+.searchbar {
+    background-color: #1C1B33;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.searchbar div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchbar input {
+    width: 95%;
+    background: none;
+    border-radius: 5px;
+    border-style: none;
+    color: #EBEBF5;
+}
+
+.searchbar button {
+    width: 5%;
+    border-radius: 5px;
+    padding: 7px;
+    border-style: none;
+
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.amount {
+    display: flex;
+    flex-direction: column;
+    color: #EBEBF5;
+    gap: 10px;
+}
+
+.received_total {
+    color: greenyellow;
+    font-size: 20px;
+}
+
+.order {
+    width: 200px;
+    background: linear-gradient(to bottom, #5936B4, #362A84);
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 12px;
+    color: #EBEBF5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="date"] {
+    font-family: 'Roboto', monospace;
+}
