@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     outline: 0;
+    font-family: "Inter", sans-serif;
 }
 
 body {
@@ -12,7 +15,7 @@ body {
 }
 
 nav {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .searchbar {
@@ -49,20 +52,43 @@ main {
     gap: 40px;
 }
 
-.amount {
+.transactions {
     display: flex;
     flex-direction: column;
     color: #EBEBF5;
+    gap: 20px;
+}
+
+.transactions_date {
+    display: flex;
+    align-items: center;
     gap: 10px;
 }
 
-.received_total {
+.transactions_values {
+    display: flex;
+    gap: 50px;
+}
+
+.transactions_values div {
+    display: flex;
+    flex-direction: column;
+}
+
+.total_to_receive {
     color: greenyellow;
-    font-size: 20px;
+}
+
+.total_received {
+    color: greenyellow;
+}
+
+.debit {
+    color: red;
 }
 
 .order {
-    width: 200px;
+    width: 210px;
     background: linear-gradient(to bottom, #5936B4, #362A84);
     border-radius: 30px;
     padding: 20px;
@@ -73,6 +99,15 @@ main {
     gap: 10px;
 }
 
+.order div {
+    display: flex;
+    justify-content: space-between;
+}
+
 input[type="date"] {
     font-family: 'Roboto', monospace;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #EBEBF5;
+    border: none;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
-    <title>RaruOrders</title>
+    <title>RaruEarnings</title>
 </head>
 <body>
     <nav>
@@ -16,18 +16,27 @@
         </div>
     </nav>
     <main>        
-        <div class="amount">
-            <div id="amount_date">
+        <div class="transactions">
+            <div class="transactions_date">
                 <label for="">De</label>
                 <input type="date">
                 <label for="">a</label>
                 <input type="date">
             </div>
-            <div class="amount_received">
-                <label for="">Trabalhos:</label>
-                <label for="" class="received_total">2.951,08</label>                
+            <div class="transactions_values">
+                <div class="value_to_receive">
+                    <label for="">Valor a receber:</label>
+                    <label for="" class="total_to_receive">781,40</label>                
+                </div>
+                <div class="value_received">
+                    <label for="">Valor recebido:</label>
+                    <label for="" class="total_received">800,00</label>                
+                </div>
+                <div class="debits">
+                    <label for="">Débito:</label>
+                    <label for="" class="debit">-18,60</label>                
+                </div>
             </div>
-            <div class="amount_"></div>
         </div>
         <div class="orders">
             <div class="order">
@@ -48,8 +57,11 @@
                     <label for="">Cor:</label>
                     <label class="teeths_color">A3</label>
                 </div>
+                <div class="order_total_value">
+                    <label for="">Total:</label>
+                    <label class="total_value">R$ 96,00</label>
+                </div>
             </div>
-            
         </div>
     </main>
 </body>
