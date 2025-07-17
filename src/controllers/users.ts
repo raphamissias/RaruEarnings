@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { createUserService, readUserService } from "../services/users"
+import { createUserService, readUserService, updateUserService, deleteUserService } from "../services/users"
 
 const createUserController = async (req: Request, res: Response) => {
     const user_created = await createUserService(req.body);
@@ -8,13 +8,22 @@ const createUserController = async (req: Request, res: Response) => {
 }
 
 const readUserController = async (req: Request, res: Response) => {
-    try {
-        const users = await readUserService(); 
-
-        return res.status(200).json(users);
-    } catch (error) {
-        console.log("Erro")
-    }
+    const users = await readUserService(); 
+    
+    return res.status(200).json(users);
 };
 
-export { createUserController, readUserController };
+const updateUserController = async (req: Request, res: Response) => {
+    const user_updated = await updateUserService(req.body);
+
+    return res.status(201).json(user_updated);
+}
+
+const deleteUserController = async (req: Request, res: Response) => {
+    const user = await deleteUserService(req.body); 
+    
+    return res.status(200).json(user);
+};
+
+
+export { createUserController, readUserController, updateUserController, deleteUserController };

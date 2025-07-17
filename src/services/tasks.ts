@@ -2,16 +2,26 @@ import { tasks_collection } from "../database/index"
 import { ITask } from "../interfaces/database";
 
 const createTaskService = async (payload: ITask) => {
-    const new_task = payload;
-    const task_created = await tasks_collection.insertOne(new_task);
+    try {
+        const new_task = payload;
+        const task_created = await tasks_collection.insertOne(new_task);
+        
+        return task_created;
 
-    return task_created;
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const readTaskService = async () => {
-    const tasks = await tasks_collection.find().toArray();
+    try {
+        const tasks = await tasks_collection.find().toArray();
 
-    return tasks;
+        return tasks;
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export { readTaskService, createTaskService};
