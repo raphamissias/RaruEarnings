@@ -1,4 +1,10 @@
-const OrderInfo = ({lblText, value, input}) => {
+interface IOrderInfoProps {
+    lblText: string;
+    value?: string;
+    input?: string;
+}
+
+const OrderInfo = ({lblText, value, input}: IOrderInfoProps) => {
 
     return (
         <div>
