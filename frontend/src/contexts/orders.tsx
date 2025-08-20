@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useContext } from "react";
 import { api } from "../api";
 import { DateContext } from "./date";
 
-export interface ICustomer {
+interface ICustomer {
     id: number;
     name: string;
 }
