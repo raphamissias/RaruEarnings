@@ -1,9 +1,22 @@
 import { createContext, useState } from "react";
 
-export const DateContext = createContext({});
+export type tDate = string;
 
-const DateProvider = ({ children }) => {
-    const now = new Date()
+interface IDateProviderProps {
+    children: React.ReactNode;
+};
+
+interface IDateContext {
+    initialDate: string;
+    setInitialDate: React.Dispatch<React.SetStateAction<tDate>>;
+    finalDate: string;
+    setFinalDate: React.Dispatch<React.SetStateAction<tDate>>;
+};
+
+export const DateContext = createContext({} as IDateContext);
+
+const DateProvider = ({ children }: IDateProviderProps) => {
+    const now = new Date();
     const currentDate = new Date(
         now.getFullYear(),
         now.getMonth(),
@@ -15,8 +28,8 @@ const DateProvider = ({ children }) => {
         now.getDate()
     ).toISOString().substr(0, 10);
 
-    const [initialDate, setInitialDate] = useState(aMonthAgo);
-    const [finalDate, setFinalDate] = useState(currentDate);
+    const [initialDate, setInitialDate] = useState<tDate>(aMonthAgo);
+    const [finalDate, setFinalDate] = useState<tDate>(currentDate);
 
     return (
         <DateContext.Provider value={{ initialDate, setInitialDate, finalDate, setFinalDate }}>
@@ -25,4 +38,4 @@ const DateProvider = ({ children }) => {
     );
 };
 
-export default DateProvider
+export default DateProvider;
