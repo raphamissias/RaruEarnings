@@ -1,6 +1,11 @@
 import style from "./style.module.css"
 
-const TransactionSection = ({ label, value }) => {
+interface ItransactionSectionProps {
+    label: string;
+    value: string;
+}
+
+const TransactionSection = ({ label, value }: ItransactionSectionProps) => {
 
     return (
         <div>
