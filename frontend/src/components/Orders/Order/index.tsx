@@ -2,8 +2,13 @@ import style from "./style.module.css";
 import OrderItem from "./OrderItems";
 import OrderInfo from "./OrderInfo";
 import { useState } from "react";
+import type { IOrder } from "../../../contexts/orders";
 
-const Order = ({ order }) => {
+interface IOrderProps {
+    order: IOrder
+}
+
+const Order = ({ order }: IOrderProps) => {
     const [expanded, setExpanded] = useState(false);
 
     const totalValue = () => {
@@ -13,7 +18,7 @@ const Order = ({ order }) => {
             total += parseFloat(item.task.value);
         })
 
-        return total
+        return total.toString()
     }
 
     return (
