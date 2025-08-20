@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const orders_controller_1 = require("../controllers/orders.controller");
+const orders_middleware_1 = require("../middlewares/orders.middleware");
+const orderRoutes = (0, express_1.Router)();
+orderRoutes.get("", orders_controller_1.readOrderController);
+orderRoutes.post("", orders_middleware_1.validateData, orders_controller_1.createOrderController);
+orderRoutes.patch("/:id", orders_middleware_1.validateData, orders_controller_1.updateOrderController);
+orderRoutes.delete("/:id", orders_controller_1.deleteOrderController);
+exports.default = orderRoutes;
