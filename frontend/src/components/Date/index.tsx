@@ -3,12 +3,17 @@ import { DateContext } from "../../contexts/date";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
+interface IDateFormValues {
+    initial: string;
+    final: string
+}
+
 const Date = () => {
     const { setInitialDate, setFinalDate } = useContext(DateContext);
     
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm<IDateFormValues>();
 
-    const submit = (formData) => {
+    const submit = (formData: IDateFormValues) => {
         const { initial, final } = formData;
 
         if (initial != "") {
