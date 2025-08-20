@@ -1,0 +1,71 @@
+.order {
+    width: 200px;
+    background: linear-gradient(to bottom, #5936B4, #362A84);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 12px;
+    color: #F8F9FA;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: margin 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transform-origin: center center;
+}
+
+.order:hover {
+    cursor: pointer;
+    border-color: #646cff;
+}
+
+.order div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order input {
+    justify-items: end;
+}
+
+.order button {
+    width: 80px;
+    align-self: flex-end;
+    background: #5936B4;
+    border: black;
+}
+
+.orderItems {
+    display: flex;
+    flex-direction: column;
+}
+
+#specifies {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.expanded {
+    width: 40%;
+    max-width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+}

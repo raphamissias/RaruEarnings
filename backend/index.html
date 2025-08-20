@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/styles/index.css">
+    <title>RaruEarnings</title>
+</head>
+<body>
+    <header>
+        <div class="menu_button">
+            <img src="./icons/menu_24.svg" alt=""/>
+        </div>
+    </header>
+    <div class="layout">
+        <nav>
+            <div class="nav_button">
+                <img src="./icons/customers_24.svg" alt="">
+            </div>
+        </nav>
+        <main>
+            <section class="transactions">
+                <div class="transactions_date">
+                    <label for="">De</label>
+                    <input type="date">
+                    <label for="">a</label>
+                    <input type="date">
+                    <button class="refresh_button">Atualizar</button>
+                </div>
+                <div class="transactions_values">
+                    <div class="total_per_jobs">
+                        <label for="">Total de trabalhos:</label>
+                        <p class="value_per_jobs">781,40</p>                
+                    </div>
+                    <div class="total_to_receive">
+                        <label for="">Salário:</label>
+                        <p class="value_to_receive">581,03</p>                
+                    </div>
+                    <div class="total_received">
+                        <label for="">Valor recebido:</label>
+                        <p class="value_received">800,00</p>                
+                    </div>
+                    <div class="debits">
+                        <label for="">Débito/A receber:</label>
+                        <p class="debit">-18,60</p>                
+                    </div>
+                </div>
+            </section>
+            <section class="orders">
+                <div class="order_list"></div>
+            </section>
+            <section class="history">
+                <h5 for="">Histórico de lançamentos</h5>
+                <div class="transactions_history">
+                    <div class="total_received">
+                        <p class="transactions_detail">Salário</p>
+                        <p class="date">Data: 17/07/2025</p>
+                        <p class="value_received">+800,00</p>
+                    </div>
+                    <div class="debits">
+                        <p class="transactions_detail">Adiantamento</p>
+                        <p class="date">Data: 17/07/2025</p>
+                        <p class="debit">-18,60</p>
+                    </div>
+                    <div class="debits">
+                        <p class="transactions_detail">INSS</p>
+                        <p class="date">Data: 17/07/2025</p>
+                        <p class="debit">-171,07</p>
+                    </div>
+                    <div class="debits">
+                        <p class="transactions_detail">Bloco de notas</p>
+                        <p class="date">Data: 17/07/2025</p>
+                        <p class="debit">-47,90</p>
+                    </div>
+                </div>
+            </section>        
+        </main>
+    </div>
+    <footer></footer>
+    <script type="module", src="index.js"></script>
+</body>
+</html>

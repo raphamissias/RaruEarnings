@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #2E335A, #1C1B33);
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.menu_button {
+    display: flex;
+    align-items: center;
+}
+
+.layout {
+    display: flex;
+}
+
+nav {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 500px;
+    margin: 0 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+.transactions {
+    display: flex;
+    flex-direction: column;
+    color: #F8F9FA;
+    gap: 20px;
+}
+
+.transactions_date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.transactions_date input {
+    cursor: pointer;
+}
+
+.transactions_values {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.transactions_values div {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.value_per_jobs {
+    color: greenyellow;
+}
+
+.value_to_receive {
+    color: greenyellow;
+}
+
+.value_received {
+    color: greenyellow;
+}
+
+.debit {
+    color: red;
+}
+
+.orders {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+}
+
+.orders_bar {
+    align-self: center;
+    width: 80%;
+    background-color: #1C1B33;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.orders_bar div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.orders_bar input {
+    width: 95%;
+    background: none;
+    border-radius: 5px;
+    border-style: none;
+    color: #F8F9FA;
+}
+
+.orders_bar button {
+    width: 5%;
+    border-radius: 5px;
+    padding: 7px;
+    border-style: none;
+    cursor: pointer;
+}
+
+.order_list {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+.order {
+    width: 240px;
+    background: linear-gradient(to bottom, #5936B4, #362A84);
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 12px;
+    color: #F8F9FA;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: margin 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transform-origin: center center;
+}
+
+.order:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.order div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.order_items {
+    display: flex;
+    flex-direction: column;
+}
+
+#specifies {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+input[type="date"] {
+    font-family: 'Roboto', monospace;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #F8F9FA;
+    border: none;
+}
+
+.history {
+    font-size: 14px;
+    color: #F8F9FA;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+h5 {
+    font-weight: 200;
+}
+
+.transactions_history {
+    background-color: #1C1B33;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.transactions_history div {
+    display: flex;
+    align-items: center;
+    background-color: #2E335A;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 75px;
+}
+
+.transactions_detail {
+    width: 100px;
+}
+
+.date {
+    color: #868E96;
+    font-size: 12px;
+}
+
+footer {
+    height: 50px;
+}
