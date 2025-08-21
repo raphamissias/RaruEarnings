@@ -13,7 +13,7 @@ interface ITask {
     value: string;
 }
 
-interface IItem {
+export interface IItem {
     id: number;
     task: ITask;
 }

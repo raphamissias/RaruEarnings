@@ -1,20 +1,31 @@
 import "./style.css";
+import type { IItem } from "../../../../contexts/orders";
 
-const OrderItem = ({ items }) => {
+interface IOrderItemProps {
+    items: IItem[]
+}
 
-    const tasks = []
+interface ITask {
+    quantity: number;
+    name: string;
+    value: number
+}
+
+const OrderItem = ({ items }: IOrderItemProps) => {
+
+    const tasks: ITask[] = []
 
     items.forEach((item) => {
-        const existingItem = tasks.find(i => i.name === item.task.name);
+        const existingItem = tasks.find((i) => i.name === item.task.name);
 
         if (existingItem) {
-            existingItem.qty += 1;
-            existingItem.value = parseInt(existingItem.value) + parseInt(existingItem.value);
+            existingItem.quantity += 1;
+            existingItem.value = existingItem.value + existingItem.value;
         } else {
             tasks.push({
-                qty: 1,
+                quantity: 1,
                 name: item.task.name,
-                value: item.task.value
+                value: parseFloat(item.task.value)
             })
         }
     });
@@ -23,7 +34,7 @@ const OrderItem = ({ items }) => {
         <>
             {tasks.map((task) => (
                 <div className="item">
-                    <p className="item_quantity">{task.qty}</p>
+                    <p className="item_quantity">{task.quantity}</p>
                     <p className="task_name">{task.name}</p>
                     <p className="task_value">{task.value}</p>
                 </div>
