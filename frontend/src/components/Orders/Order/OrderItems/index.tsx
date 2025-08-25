@@ -1,4 +1,4 @@
-import "./style.css";
+import style from "./style.module.css";
 import type { IItem } from "../../../../contexts/orders";
 
 interface IOrderItemProps {
@@ -33,7 +33,7 @@ const OrderItem = ({ items }: IOrderItemProps) => {
     return (
         <>
             {tasks.map((task) => (
-                <div className="item">
+                <div className={style.item}>
                     <p className="item_quantity">{task.quantity}</p>
                     <p className="task_name">{task.name}</p>
                     <p className="task_value">{task.value}</p>

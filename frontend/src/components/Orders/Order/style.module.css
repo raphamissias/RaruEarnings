@@ -1,5 +1,4 @@
 .order {
-    width: 200px;
     background: linear-gradient(to bottom, #5936B4, #362A84);
     border: 1px solid transparent;
     border-radius: 10px;
@@ -33,7 +32,7 @@
 }
 
 .order button {
-    width: 80px;
+    width: 5rem;
     align-self: flex-end;
     background: #5936B4;
     border: black;
@@ -45,17 +44,24 @@
 }
 
 #specifies {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+}
+
+.specifies_secondary {
+    color: gainsboro;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .expanded {
-    width: 40%;
-    max-width: 500px;
+    width: 60%;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 45%;
+    left: 45%;
     transform: translate(-50%, -50%);
     z-index: 999;
 }

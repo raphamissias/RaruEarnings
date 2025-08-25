@@ -24,7 +24,7 @@ const Order = ({ order }: IOrderProps) => {
     return (
         <>
             {expanded && <div className={style.overlay} onClick={() => setExpanded(false)} />}
-            <div onClick={() => setExpanded(true)} className={`${style.order} ${expanded ? style.expanded : ""}`} key={order.id}>
+            <li onClick={() => setExpanded(true)} className={`${style.order} ${expanded ? style.expanded : ""}`} key={order.id}>
                 {expanded ? (
                         <>
                             <OrderInfo lblText="Cliente" input={order.customer.name} />
@@ -46,15 +46,17 @@ const Order = ({ order }: IOrderProps) => {
                                 <OrderItem items={order.items}/>
                             </div>
                             <div id={style.specifies}>
-                                <OrderInfo lblText="Dentes" value={order.teeths} />
-                                <OrderInfo lblText="Cor" value={order.color} />
+                                <div className={style.specifies_secondary}>
+                                    <OrderInfo lblText="Dentes" value={order.teeths} />
+                                    <OrderInfo lblText="Cor" value={order.color} />
+                                    <OrderInfo lblText="Data" value={order.date} />
+                                </div>
                                 <OrderInfo lblText="Total" value={totalValue()} />
-                                <OrderInfo lblText="Data" value={order.date} />
                             </div>
                         </>
                     )
                 }
-            </div>
+            </li>
         </>
     )
 }
