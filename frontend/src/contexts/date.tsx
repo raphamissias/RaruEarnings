@@ -6,7 +6,7 @@ interface IDateProviderProps {
     children: React.ReactNode;
 };
 
-interface IDateContext {
+export interface IDateContext {
     initialDate: string;
     setInitialDate: React.Dispatch<React.SetStateAction<tDate>>;
     finalDate: string;
