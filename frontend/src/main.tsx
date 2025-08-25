@@ -4,12 +4,15 @@ import './index.css'
 import App from './App.tsx'
 import OrdersProvider from './contexts/orders.tsx'
 import DateProvider from './contexts/date.tsx'
+import TransactionsProvider from './contexts/transactions.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <DateProvider>
       <OrdersProvider>
-        <App />
+        <TransactionsProvider>
+          <App />
+        </TransactionsProvider>
       </OrdersProvider>
     </DateProvider>
   </StrictMode>,
