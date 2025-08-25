@@ -1,0 +1,22 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    transition: .4s;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+
+    border-radius: 255px
+}
+
+.btn.lg {
+    height: 49px;
+}
+
+.btn.sm {
+    height: 35px;
+}

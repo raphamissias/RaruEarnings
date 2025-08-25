@@ -1,0 +1,22 @@
+.title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.title.one {
+    font-size: 1.9rem;
+}
+
+.title.two {
+    font-size: 1.45rem;
+}
+
+.paragraph {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.paragraph strong {
+    font-weight: 700;
+}
