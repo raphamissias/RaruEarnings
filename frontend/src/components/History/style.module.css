@@ -7,6 +7,7 @@
 
 h5 {
     font-weight: 200;
+    margin: 30px 0 0;
 }
 
 .transactionsHistory {
@@ -18,7 +19,7 @@ h5 {
     gap: 10px;
 }
 
-.transactionsHistory div {
+.transactionsHistory li {
     display: flex;
     align-items: center;
     background-color: #2E335A;
