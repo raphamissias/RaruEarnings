@@ -51,11 +51,11 @@ const Transactions = () => {
 
     const debitToReceive = () => {
         const totalOrdersValue = totalWork();
-        const valueReceived = totalReceived()
+        const salary = totalSalary()
 
-        const total = totalOrdersValue - parseFloat(valueReceived);
+        const total = totalOrdersValue - parseFloat(salary);
 
-        return total;
+        return total.toString().substring(0,7);
     }
 
     return (
