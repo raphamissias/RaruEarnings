@@ -2,10 +2,11 @@ import { useContext } from "react";
 import style from "./style.module.css";
 import TransactionSection from "./TransactionSection";
 import { OrdersContext } from "../../contexts/orders";
+import { TransactionsContext } from "../../contexts/transactions";
 
 const Transactions = () => {
-
     const { ordersList } = useContext(OrdersContext);
+    const { transactionsList } = useContext(TransactionsContext);
 
     const totalWork = () => {
         let totalValue = 0;
@@ -17,15 +18,53 @@ const Transactions = () => {
         }): null;
 
         return totalValue;
+    };
+
+    const totalReceived = () => {
+        let total = 0;
+
+        transactionsList ? transactionsList.map((item) => {
+            if (item.isDiscount == false) {
+                total += parseFloat(item.value);
+            }
+        }) : null;
+
+        return total.toString();
+    };
+
+    const totalSalary = () => {
+        let totalReceived = 0;
+        let totalDiscount = 0;
+
+        transactionsList ? transactionsList.map((item) => {
+            if (item.isDiscount == false) {
+                totalReceived += parseFloat(item.value)
+            } else {
+                totalDiscount += parseFloat(item.value)
+            }
+        }): null;
+
+        const total = totalReceived - totalDiscount
+
+        return total.toString().substring(0,6);
+    }
+
+    const debitToReceive = () => {
+        const totalOrdersValue = totalWork();
+        const valueReceived = totalReceived()
+
+        const total = totalOrdersValue - parseFloat(valueReceived);
+
+        return total;
     }
 
     return (
         <section className={style.transactions}>
             <div className={style.transactionsValues}>
                 <TransactionSection label="Total de Trabalhos" value={totalWork() ? totalWork().toString() : "0"} />
-                <TransactionSection label="Salário" value={"581,03"} />
-                <TransactionSection label="Valor recebido" value={"800,00"} />
-                <TransactionSection label="Débito/A receber" value={"-18,60"} />
+                <TransactionSection label="Salário" value={totalSalary()} />
+                <TransactionSection label="Valor recebido" value={totalReceived()} />
+                <TransactionSection label="Débito/A receber" value={debitToReceive().toString()} />
             </div>
         </section>
     )
