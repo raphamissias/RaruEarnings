@@ -31,11 +31,6 @@
     border-color: #646cff;
 }
 
-.order div {
-    display: flex;
-    justify-content: space-between;
-}
-
 .order ul {
     display: flex;
     justify-content: space-between;
