@@ -4,7 +4,7 @@ import style from "./style.module.css"
 interface IOrderInfoProps {
     lblText: string;
     value?: string;
-    input: string;
+    input?: string;
     icon?: string;
     placeholder?: string;
 }
