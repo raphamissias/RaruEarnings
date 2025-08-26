@@ -21,7 +21,7 @@ const OrderInfo = ({lblText, value, input, icon, placeholder}: IOrderInfoProps) 
             {icon? <span className={style.icon}>{icon}</span> 
                 : <label htmlFor="">{lblText}:</label>
             }
-            {input ? <input type="text" value={textField} placeholder={placeholder} onClick={() => (setTextField(""))} onChange={e => setTextField(e.target.value)}/> : <p>{value}</p> }
+            {input ? <input type="text" value={textField} placeholder={placeholder} onChange={e => setTextField(e.target.value)}/> : <p>{value}</p> }
         </div>
     )
 }
