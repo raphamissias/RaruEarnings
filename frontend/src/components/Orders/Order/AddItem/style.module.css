@@ -22,5 +22,6 @@
 }
 
 .item select {
-    width: 70%;
+    width: 8.7rem;
+    border-radius: 5px;
 }
