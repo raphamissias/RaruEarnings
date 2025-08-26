@@ -11,17 +11,18 @@ const Orders = () => {
         <section className={style.orders}>
             <button className={style.addOrder} onClick={() => setExpanded(!expanded)}>+</button>
             <ListOrders></ListOrders>
+            {expanded && <div className={style.overlay} onClick={() => setExpanded(false)} />}
             { expanded ? 
                 (
                     <div className={`${style.order} ${style.newOrder}`}>
-                            <OrderInfo lblText="Cliente" input="a"/>
+                            <OrderInfo lblText="Cliente" input=" "/>
                             <div className={style.orderItems}>
                                 <AddItem />
                             </div>
-                            <div id={style.specifies}>
-                                <OrderInfo lblText="Dentes" input="a" placeholder="Dentes" />
-                                <OrderInfo lblText="Cor" input="a" />
-                                <OrderInfo lblText="Data" input="a" />
+                            <div className={style.specifies}>
+                                <OrderInfo lblText="Dentes" input=" " />
+                                <OrderInfo lblText="Cor" input=" " />
+                                <OrderInfo lblText="Data" input=" " />
                             </div>
                             <button>Criar nota</button>
                     </div>
