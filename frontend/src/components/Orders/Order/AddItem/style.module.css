@@ -1,0 +1,26 @@
+.addItem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.addItem button {
+    padding: 2px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    place-content: center;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item input {
+    width: 2rem;
+}
+
+.item select {
+    width: 70%;
+}
