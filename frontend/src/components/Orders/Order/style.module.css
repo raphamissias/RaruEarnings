@@ -42,6 +42,7 @@
 }
 
 .order input {
+    max-width: 7rem;
     justify-items: end;
 }
 
