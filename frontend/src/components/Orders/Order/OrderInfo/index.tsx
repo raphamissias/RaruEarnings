@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./style.module.css"
 
 interface IOrderInfoProps {
@@ -12,20 +12,16 @@ interface IOrderInfoProps {
 const OrderInfo = ({lblText, value, input, icon, placeholder}: IOrderInfoProps) => {
     const [textField, setTextField] = useState(input);
 
-    const textUpdate = () => {
-        let text = ""
-
-        text += textField;
-
-        return text;
-    }
+    useEffect(() => {
+        setTextField(input);
+    }, [input])
 
     return (
         <div className={style.orderInfo}>
             {icon? <span className={style.icon}>{icon}</span> 
                 : <label htmlFor="">{lblText}:</label>
             }
-            {input ? <input type="text" value={textUpdate()} placeholder={placeholder} onClick={() => (setTextField(""))}></input> : <p>{value}</p> }
+            {input ? <input type="text" value={textField} placeholder={placeholder} onClick={() => (setTextField(""))} onChange={e => setTextField(e.target.value)}/> : <p>{value}</p> }
         </div>
     )
 }
