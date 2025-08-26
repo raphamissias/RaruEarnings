@@ -32,7 +32,7 @@ const Order = ({ order }: IOrderProps) => {
                                 <OrderItem items={order.items}/>
                             </div>
                             <div id={style.specifies}>
-                                <OrderInfo lblText="Dentes" input={order.teeths} />
+                                <OrderInfo lblText="Dentes" input={order.teeths} icon="dentistry" />
                                 <OrderInfo lblText="Cor" input={order.color} />
                                 <OrderInfo lblText="Total" value={totalValue()} />
                                 <OrderInfo lblText="Data" input={order.date} />
@@ -41,15 +41,15 @@ const Order = ({ order }: IOrderProps) => {
                         </>
                     ) : (
                         <>
-                            <OrderInfo lblText="Cliente" value={order.customer.name} />
+                            <OrderInfo lblText="Cliente" value={order.customer.name} icon="person" />
                             <div className={style.orderItems}>
                                 <OrderItem items={order.items}/>
                             </div>
                             <div id={style.specifies}>
                                 <div className={style.specifies_secondary}>
-                                    <OrderInfo lblText="Dentes" value={order.teeths} />
-                                    <OrderInfo lblText="Cor" value={order.color} />
-                                    <OrderInfo lblText="Data" value={order.date} />
+                                    <OrderInfo lblText="Dentes" value={order.teeths} icon="dentistry" />
+                                    <OrderInfo lblText="Cor" value={order.color} icon="palette" />
+                                    <OrderInfo lblText="Data" value={order.date} icon="date_range" />
                                 </div>
                                 <OrderInfo lblText="Total" value={totalValue()} />
                             </div>
