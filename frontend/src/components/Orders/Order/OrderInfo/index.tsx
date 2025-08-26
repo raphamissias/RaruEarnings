@@ -13,7 +13,9 @@ const OrderInfo = ({lblText, value, input, icon, placeholder}: IOrderInfoProps) 
     const [textField, setTextField] = useState(input);
 
     const textUpdate = () => {
-        const text = ""
+        let text = ""
+
+        text += textField;
 
         return text;
     }
@@ -23,7 +25,7 @@ const OrderInfo = ({lblText, value, input, icon, placeholder}: IOrderInfoProps) 
             {icon? <span className={style.icon}>{icon}</span> 
                 : <label htmlFor="">{lblText}:</label>
             }
-            {input ? <input type="text" placeholder={placeholder} onClick={e => (setTextField(""))}></input> : <p>{value}</p> }
+            {input ? <input type="text" value={textUpdate()} placeholder={placeholder} onClick={() => (setTextField(""))}></input> : <p>{value}</p> }
         </div>
     )
 }
