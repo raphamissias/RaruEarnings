@@ -8,7 +8,7 @@ const History = () => {
 
     return (
         <section className={style.history}>
-            <h5>Histórico de lançamentos</h5>
+            <h6>Histórico de lançamentos</h6>
             <ul className={style.transactionsHistory}>
                 {transactionsList.map((item) => {
                     return (

@@ -1,11 +1,10 @@
 .history {
-    font-size: 14px;
     color: #F8F9FA;
     display: flex;
     flex-direction: column;
 }
 
-h5 {
+h6 {
     font-weight: 200;
     margin: 30px 0 0;
 }
@@ -17,38 +16,5 @@ h5 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.transactionsHistory li {
-    display: flex;
-    align-items: center;
-    background-color: #2E335A;
-    border-radius: 10px;
-    padding: 10px;
-    gap: 75px;
-}
-
-.transactionsDetail {
-    width: 100px;
-}
-
-.date {
-    color: #868E96;
-    font-size: 12px;
-}
-
-.valuePerJobs {
-    color: greenyellow;
-}
-
-.valueToReceive {
-    color: greenyellow;
-}
-
-.valueReceived {
-    color: greenyellow;
-}
-
-.debit {
-    color: red;
+    margin: 10px 0;
 }

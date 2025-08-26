@@ -31,7 +31,7 @@ const Date = () => {
             <input type="date" {...register("initial")} />
             <label htmlFor="">a</label>
             <input type="date" {...register("final")} />
-            <button type="submit" className={style.refreshButton}>Atualizar</button>
+            <button type="submit" className={style.icon}>search</button>
         </form>
     )
 };

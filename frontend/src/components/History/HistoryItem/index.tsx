@@ -11,9 +11,15 @@ const HistoryItem = ({name, date, value, isDiscount}: IHistoryItemProps) => {
 
     return (
         <li className={style.item}>
-            <p className={style.name}>{ name }</p>
-            <p className={style.date}>{ "Data: " + date }</p>
-            <p className={isDiscount? style.debit : style.value}>{ isDiscount? "-" + value : "+" + value }</p>
+            <div>
+                <p className={style.name}>{ name }</p>
+            </div>
+            <div>
+                <p className={style.date}>{ date }</p>
+            </div>
+            <div>
+                <p className={isDiscount? style.debit : style.value}>{ isDiscount? "-" + value : "+" + value }</p>
+            </div>
         </li>
     )
 };

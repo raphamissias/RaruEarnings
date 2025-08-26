@@ -7,9 +7,8 @@
 }
 
 .transactionsValues {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .transactionsValues div {
@@ -17,6 +16,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+}
+
+.transactionsValues p {
+    font-size: 1rem;
 }
 
 .valuePerJobs {

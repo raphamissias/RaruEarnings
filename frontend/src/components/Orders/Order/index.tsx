@@ -32,7 +32,7 @@ const Order = ({ order }: IOrderProps) => {
                                 <OrderItem items={order.items}/>
                             </div>
                             <div id={style.specifies}>
-                                <OrderInfo lblText="Dentes" input={order.teeths} icon="dentistry" />
+                                <OrderInfo lblText="Dentes" input={order.teeths} />
                                 <OrderInfo lblText="Cor" input={order.color} />
                                 <OrderInfo lblText="Total" value={totalValue()} />
                                 <OrderInfo lblText="Data" input={order.date} />
