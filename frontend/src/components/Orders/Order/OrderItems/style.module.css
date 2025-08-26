@@ -1,4 +1,9 @@
 .item {
     display: flex;
+    justify-content: space-between;
     gap: 1rem;
+}
+
+.item p {
+    text-align: center;
 }
