@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListOrders from "./ListOrders";
 import style from "./style.module.css"
 import OrderInfo from "./Order/OrderInfo";
@@ -6,18 +6,37 @@ import AddItem from "./Order/AddItem";
 
 const Orders = () => {
     const [expanded, setExpanded] = useState(false);
+    const [itemCount, setItemCount] = useState(0);
+
+    const addNewItem = () => {
+        const renderingArr = [];
+        let count = 0;
+
+        while(count < itemCount){
+            renderingArr.push(<AddItem />)
+            count++
+        }
+
+        return (renderingArr);
+    }
+    
+    useEffect(() => {
+        addNewItem();
+    }, [itemCount])
 
     return (
         <section className={style.orders}>
-            <button className={style.addOrder} onClick={() => setExpanded(!expanded)}>+</button>
+            <button className={style.addOrder} onClick={() => {setExpanded(!expanded), setItemCount(0)}}>+</button>
             <ListOrders></ListOrders>
             {expanded && <div className={style.overlay} onClick={() => setExpanded(false)} />}
             { expanded ? 
                 (
                     <div className={`${style.order} ${style.newOrder}`}>
-                            <OrderInfo lblText="Cliente" input=" "/>
+                            <OrderInfo lblText="Cliente" select=" " />
                             <div className={style.orderItems}>
-                                <AddItem />
+                                <AddItem></AddItem>
+                                {addNewItem()}
+                                <button onClick={() => setItemCount(itemCount + 1)}>+</button>
                             </div>
                             <div className={style.specifies}>
                                 <OrderInfo lblText="Dentes" input=" " />
