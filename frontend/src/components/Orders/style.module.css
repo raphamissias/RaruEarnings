@@ -30,7 +30,13 @@
 }
 
 .order input {
-    width: 8rem;
+    width: 9rem;
+}
+
+.order select {
+    height: 1.7rem;
+    width: 9.6rem;
+    border-radius: 5px;
 }
 
 .overlay {
@@ -47,9 +53,23 @@
 
 .newOrder {
     width: 60%;
+    max-width: 250px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
+}
+
+.orderItems {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.orderItems button {
+    display: flex;
+    height: 1.3rem;
+    align-items: center;
+    justify-content: center;    
 }
