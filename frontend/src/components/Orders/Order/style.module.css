@@ -87,3 +87,9 @@
   background: rgba(0, 0, 0, 0.4);
   z-index: 998;
 }
+
+.order select {
+    height: 1.7rem;
+    width: 7.7rem;
+    border-radius: 5px;
+}
