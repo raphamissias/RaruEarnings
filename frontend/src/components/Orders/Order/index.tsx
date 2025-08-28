@@ -27,7 +27,7 @@ const Order = ({ order }: IOrderProps) => {
             <li onClick={() => setExpanded(true)} className={`${style.order} ${expanded ? style.expanded : ""}`} key={order.id}>
                 {expanded ? (
                         <>
-                            <OrderInfo lblText="Cliente" input={order.customer.name} />
+                            <OrderInfo lblText="Cliente" select={order.customer.name} />
                             <div className={style.orderItems}>
                                 <OrderItem items={order.items}/>
                             </div>
