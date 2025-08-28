@@ -4,14 +4,6 @@
     gap: 5px;
 }
 
-.addItem button {
-    padding: 2px;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    place-content: center;
-}
-
 .item {
     display: flex;
     justify-content: space-between;
@@ -22,6 +14,6 @@
 }
 
 .item select {
-    width: 8.7rem;
+    width: 9.6rem;
     border-radius: 5px;
 }

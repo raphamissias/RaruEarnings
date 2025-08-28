@@ -21,3 +21,7 @@
 .orderInfo input {
   justify-items: end;
 }
+
+select {
+  width: 9.6rem;
+}
