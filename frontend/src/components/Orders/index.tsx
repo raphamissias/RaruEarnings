@@ -41,7 +41,7 @@ const Orders = () => {
                             <div className={style.specifies}>
                                 <OrderInfo lblText="Dentes" input=" " />
                                 <OrderInfo lblText="Cor" input=" " />
-                                <OrderInfo lblText="Data" input=" " />
+                                <OrderInfo lblText="Data" input={new Date().toISOString().substring(0, 10)} />
                             </div>
                             <button>Criar nota</button>
                     </div>
