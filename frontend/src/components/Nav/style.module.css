@@ -1,0 +1,58 @@
+nav {
+  display: flex;
+  place-content: flex-end;
+}
+
+.button_menu {
+  place-content: flex-end;
+  padding: 0.7rem;
+
+  background: none;
+}
+
+.icon {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 20;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.menu {
+  height: 100%;
+  min-width: 130px;
+  max-width: 280px;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  position: fixed;
+  z-index: 999;
+  background-color: #362A84;
+
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu.open {
+  transform: translate(0);
+}
+
+.overlay {
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  z-index: 998;
+
+  top: 0;
+  left: 0;
+
+  background: rgba(0, 0, 0, 0.4);
+}

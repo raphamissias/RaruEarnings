@@ -1,0 +1,26 @@
+.icon {
+  font-family: 'Material Symbols Outlined';
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1;
+
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 200,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+    margin: 0 0 10px;
+}
+
+a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: white;
+}
