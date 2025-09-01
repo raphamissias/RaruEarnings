@@ -18,7 +18,10 @@ const Order = ({ order }: IOrderProps) => {
             total += parseFloat(item.task.value);
         })
 
-        return total.toString()
+        return total.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        })
     }
 
     return (

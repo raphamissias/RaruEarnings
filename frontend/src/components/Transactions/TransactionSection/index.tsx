@@ -10,7 +10,10 @@ const TransactionSection = ({ label, value }: ItransactionSectionProps) => {
     return (
         <div>
             <label htmlFor="">{ label }:</label>
-            <p className={ parseFloat(value) > 0 ? style.credit : style.debit }>{ value }</p>                
+            <p className={ parseFloat(value) > 0 ? style.credit : style.debit }>{ parseFloat(value).toLocaleString('pt-br', {
+            style: 'currency',
+            currency: 'BRL'
+        }) }</p>                
         </div>
     )
 }

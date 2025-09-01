@@ -40,7 +40,8 @@ const Transactions = () => {
             if (item.isDiscount == false) {
                 totalReceived += parseFloat(item.value)
             } else {
-                totalDiscount += parseFloat(item.value)
+                const value = item.value.replace(",", ".") ;
+                totalDiscount += parseFloat(value)
             }
         }): null;
 

@@ -20,7 +20,7 @@ const OrderItem = ({ items }: IOrderItemProps) => {
 
         if (existingItem) {
             existingItem.quantity += 1;
-            existingItem.value = existingItem.value + existingItem.value;
+            existingItem.value = existingItem.value + parseFloat(item.task.value);
         } else {
             tasks.push({
                 quantity: 1,
@@ -36,7 +36,7 @@ const OrderItem = ({ items }: IOrderItemProps) => {
                 <div className={style.item}>
                     <p className="item_quantity">{task.quantity}</p>
                     <p className="task_name">{task.name}</p>
-                    <p className="task_value">{task.value}</p>
+                    <p className="task_value">{task.value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 </div>
             ))}
         </>
