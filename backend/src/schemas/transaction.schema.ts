@@ -12,7 +12,13 @@ const TransactionSchema = z.object({
 const TransactionReadSchema = z.array(z.object({
     id: z.number(),
     name: z.string(),
-    value: z.number(),
+    value: z.union([z.string(), z.number()]).transform((val) => {
+        const num = typeof val === "string" ? Number(val) : val;
+        return num.toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }),
     isDiscount: z.boolean().default(false),
     date: z.string().transform((val) => {
       const [year, month, day] = val.split('-');
