@@ -2,6 +2,7 @@ import { ITransactionOmitId } from "../interfaces/models/transactions";
 import { AppDataSource } from "../data-source";
 import { Transaction } from "../entities/transactions.entity";
 import { AppError } from "../error";
+import { TransactionReadSchema } from "../schemas/transaction.schema";
 
 const createTransactionService = async (payload: ITransactionOmitId) => {
     const transactionRepo = AppDataSource.getRepository(Transaction);
@@ -16,7 +17,7 @@ const readTransactionService = async () => {
 
     const transactions: Transaction[] = await transactionRepo.find();
 
-    return transactions;
+    return TransactionReadSchema.parse(transactions);
 };
 
 const updateTransactionService = async (transactionId: string, payload: Partial<ITransactionOmitId>) => {

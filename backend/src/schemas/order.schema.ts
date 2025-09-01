@@ -17,7 +17,9 @@ const OrderReadSchema = z.array(z.object({
     patient: z.string().nullish(),
     teeths: z.string(),
     color: z.string(),
-    date: z.string().date({ message: "Data inválida" }).transform((val) => new Date(val)),
+    date: z.string().date().transform((val) => new Date(val).toLocaleDateString('pt-BR', {
+        year: 'numeric', month: '2-digit', day: '2-digit'
+    })),
     customer: CustomerSchema,
     items: z.array(z.object({
         task: TaskReadSchemaObject

@@ -9,7 +9,7 @@ const createTransactionController = async (req: Request, res: Response) => {
 }
 
 const readTransactionController = async (req: Request, res: Response) => {
-    const transactions: Transaction[] = await readTransactionService(); 
+    const transactions = await readTransactionService(); 
     
     return res.status(200).json(transactions);
 };
