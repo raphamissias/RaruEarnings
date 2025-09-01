@@ -11,13 +11,14 @@ const TransactionSchema = z.object({
 
 const TransactionReadSchema = z.array(z.object({
     id: z.number(),
-    userId: z.number(),
     name: z.string(),
     value: z.number(),
     isDiscount: z.boolean().default(false),
-    date: z.string().date().transform((val) => new Date(val).toLocaleDateString('pt-BR', {
-        year: 'numeric', month: '2-digit', day: '2-digit'
-    })),
+    date: z.string().transform((val) => {
+      const [year, month, day] = val.split('-');
+      const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day) + 2));
+      return date.toLocaleDateString('pt-BR');
+    }),
 }));
 
 
