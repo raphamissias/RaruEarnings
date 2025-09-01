@@ -2,6 +2,7 @@ import { ITaskOmitId } from "../interfaces/models/tasks";
 import { AppDataSource } from "../data-source";
 import { Task } from "../entities/tasks.entity";
 import { AppError } from "../error";
+import { TaskReadSchema } from "../schemas/task.schema";
 
 const createTaskService = async (payload: ITaskOmitId) => {
     const taskRepo = AppDataSource.getRepository(Task);
@@ -19,7 +20,7 @@ const readTaskService = async () => {
 
     const tasks: Task[] = await taskRepo.find();
 
-    return tasks;
+    return TaskReadSchema.parse(tasks);
 };
 
 const updateTaskService = async (taskId: string, payload: Partial<ITaskOmitId>) => {
