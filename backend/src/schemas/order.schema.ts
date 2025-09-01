@@ -19,7 +19,7 @@ const OrderReadSchema = z.array(z.object({
     color: z.string(),
     date: z.string().transform((val) => {
       const [year, month, day] = val.split('-');
-      const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day) + 2));
+      const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
       return date.toLocaleDateString('pt-BR');
     }),
     customer: CustomerSchema,
