@@ -15,7 +15,10 @@ const TaskReadSchema = z.array(z.object({
     name: z.string(),
     value: z.union([z.string(), z.number()]).transform((val) => {
         const num = typeof val === "string" ? Number(val) : val;
-        return num.toLocaleString('pt-BR');
+        return num.toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
     })
 }))
 
