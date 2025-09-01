@@ -4,6 +4,7 @@ const OrderSchema = z.object({
     id: z.number(),
     user: z.number(),
     customer: z.number(),
+    patient: z.string().nullable().default(null),
     teeths: z.string(),
     color: z.string(),
     date: z.string().date({ message: "Data inválida" }).transform((val) => new Date(val))

@@ -17,6 +17,9 @@ export class Order {
     @OneToMany(() => OrderItem, (orderItem) => orderItem.order)
     items: OrderItem[];
 
+    @Column({ type: "varchar", length: 75, nullable: true })
+    patient: string;
+
     @Column({ type: "varchar", length: 45})
     teeths: string;
 
