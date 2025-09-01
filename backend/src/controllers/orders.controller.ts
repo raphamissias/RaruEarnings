@@ -9,7 +9,7 @@ const createOrderController = async (req: Request, res: Response) => {
 }
 
 const readOrderController = async (req: Request, res: Response) => {
-    const orders: Order[] = await readOrderService(req.query); 
+    const orders = await readOrderService(req.query); 
     
     return res.status(200).json(orders);
 };

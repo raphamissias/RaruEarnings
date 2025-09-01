@@ -1,3 +1,8 @@
+import { OrderItem } from "../../entities/orderItems.entity"
+import { ICustomer } from "./customers"
+import { ITask, ITaskRead } from "./tasks"
+import { IUser } from "./users"
+
 interface IOrder {
     id: number,
     user: number,

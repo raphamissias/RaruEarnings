@@ -4,6 +4,7 @@ import { Order } from "../entities/orders.entity";
 import { AppError } from "../error";
 import { User } from "../entities/users.entity";
 import { Customer } from "../entities/customers.entity";
+import { OrderReadSchema } from "../schemas/order.schema";
 
 const createOrderService = async (payload: IOrderOmitId) => {
     const orderRepo = AppDataSource.getRepository(Order);
@@ -39,7 +40,7 @@ const readOrderService = async (payload: any) => {
 
     const ordersQueryBuilder = orderRepo.createQueryBuilder("orders");
 
-    const orders = await ordersQueryBuilder
+    const orders: Order[] = await ordersQueryBuilder
         .leftJoinAndSelect("orders.customer", "customer")
         .leftJoinAndSelect("orders.items", "items")
         .leftJoinAndSelect("items.task", "task")
@@ -48,7 +49,7 @@ const readOrderService = async (payload: any) => {
         .skip(perPage * (page - 1))
         .getMany();
 
-    return orders;
+    return OrderReadSchema.parse(orders);
 };
 
 const updateOrderService = async (orderId: string, payload: Partial<IOrderOmitId>) => {

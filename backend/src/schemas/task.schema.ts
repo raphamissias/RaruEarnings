@@ -22,4 +22,17 @@ const TaskReadSchema = z.array(z.object({
     })
 }))
 
-export { TaskSchema, TaskOmidIdSchema, TaskPartialSchema, TaskReadSchema };
+const TaskReadSchemaObject = z.object({
+    id: z.number(),
+    name: z.string(),
+    value: z.union([z.string(), z.number()]).transform((val) => {
+        const num = typeof val === "string" ? Number(val) : val;
+        return num.toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    })
+});
+
+
+export { TaskSchema, TaskOmidIdSchema, TaskReadSchemaObject, TaskPartialSchema, TaskReadSchema };

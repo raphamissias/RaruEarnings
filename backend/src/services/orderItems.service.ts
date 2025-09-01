@@ -27,7 +27,12 @@ const createOrderItemService = async (payload: IOrderItemOmitId) => {
 const readOrderItemService = async () => {
     const orderItemRepo = AppDataSource.getRepository(OrderItem);
 
-    const orderItems: OrderItem[] = await orderItemRepo.find();
+    const orderItemQueryBuilder = orderItemRepo.createQueryBuilder("orderItems");
+
+    const orderItems = await orderItemQueryBuilder
+    .leftJoinAndSelect("orderItems.order", "order")
+    .leftJoinAndSelect("orderItems.task", "task")
+    .getMany();
 
     return orderItems;
 };
