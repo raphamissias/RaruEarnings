@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { createTaskService, readTaskService, updateTaskService, deleteTaskService } from "../services/tasks.service"
 import { Task } from "../entities/tasks.entity";
+import { ITaskRead } from "../interfaces/models/tasks";
 
 const createTaskController = async (req: Request, res: Response) => {
     const taskCreated: Task = await createTaskService(req.body);
@@ -9,7 +10,7 @@ const createTaskController = async (req: Request, res: Response) => {
 }
 
 const readTaskController = async (req: Request, res: Response) => {
-    const tasks: Task[] = await readTaskService(); 
+    const tasks: ITaskRead[] = await readTaskService(); 
     
     return res.status(200).json(tasks);
 };
