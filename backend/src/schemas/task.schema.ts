@@ -13,8 +13,9 @@ const TaskPartialSchema = TaskSchema.partial().omit({id: true});
 const TaskReadSchema = z.array(z.object({
     id: z.number(),
     name: z.string(),
-    value: z.number().transform((val) => {
-        return val.toLocaleString('pt-BR');
+    value: z.union([z.string(), z.number()]).transform((val) => {
+        const num = typeof val === "string" ? Number(val) : val;
+        return num.toLocaleString('pt-BR');
     })
 }))
 
