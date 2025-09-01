@@ -16,7 +16,7 @@ const dataSourceConfig = (): DataSourceOptions => {
     if (nodeEnv === 'test') {
         return {
             type: 'sqlite',
-            database: ':memory',
+            database: ':memory:',
             synchronize: true,
             entities: [entitiesPath]
         };
