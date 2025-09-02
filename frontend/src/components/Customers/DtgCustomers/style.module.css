@@ -1,0 +1,44 @@
+.dtgCustomers {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.dtgHeader {
+    width: 100%;
+    padding: 10px;
+    background-color: #5936B4;
+    border-radius: 10px 10px 0 0;
+
+    display: flex;
+}
+.column1 {
+    width: 20%;
+}
+
+.column2 {
+    width: 30%;
+}
+
+.dtgLine {
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;    
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+}
