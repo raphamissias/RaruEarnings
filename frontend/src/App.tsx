@@ -1,13 +1,13 @@
-import Nav from "./components/Nav";
-import HomePage from "./pages/HomePage";
 import './App.css'
+import Nav from "./components/Nav";
+import { RoutesMain } from "./routes/RoutesMain";
 
 function App() {
 
   return (
     <>
       <Nav></Nav>
-      <HomePage></HomePage>
+      <RoutesMain></RoutesMain>
     </>
   )
 }
