@@ -1,5 +1,7 @@
 import type { ICustomer } from "../../../database/customers";
 import style from "./style.module.css"
+import deleteIcon from "../../../icons/delete.svg"
+import edit from "../../../icons/edit.svg"
 
 interface IDtgCustomersProps {
     customers: ICustomer[];
@@ -18,8 +20,12 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
                         <span className={style.column1}>{ item.id }</span>
                         <span className={style.column2}>{ item.name }</span>
                         <div className={style.buttons}>
-                            <button>atua</button>
-                            <button>del</button>
+                            <button>
+                                <img src={ edit } alt="edit" />
+                            </button>
+                            <button>
+                                <img src={ deleteIcon } alt="delete" />
+                            </button>
                         </div>
                     </li>
 

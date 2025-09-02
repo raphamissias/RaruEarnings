@@ -6,7 +6,6 @@
 }
 
 .dtgHeader {
-    width: 100%;
     padding: 10px;
     background-color: #5936B4;
     border-radius: 10px 10px 0 0;
@@ -19,11 +18,10 @@
 }
 
 .column2 {
-    width: 40%;
+    width: 50%;
 }
 
 .dtgLine {
-    width: 100%;
     padding: 10px;
 
     display: flex;
@@ -34,6 +32,16 @@
     margin-left: auto;
     display: flex;
     gap: 5px;    
+}
+
+.buttons button {
+    width: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: none;
 }
 
 .button:hover {

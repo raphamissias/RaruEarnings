@@ -1,5 +1,8 @@
 import type { ITask } from "../../../database/tasks";
 import style from "./style.module.css"
+import deleteIcon from "../../../icons/delete.svg"
+import edit from "../../../icons/edit.svg"
+
 
 interface IDtgTasksProps {
     tasks: ITask[];
@@ -20,8 +23,12 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
                         <span className={style.column2}>{ item.name }</span>
                         <span className={style.column3}>{ item.value }</span>
                         <div className={style.buttons}>
-                            <button>atua</button>
-                            <button>del</button>
+                            <button>
+                                <img src={ edit } alt="edit" />
+                            </button>
+                            <button>
+                                <img src={ deleteIcon } alt="delete" />
+                            </button>
                         </div>
                     </li>
 
