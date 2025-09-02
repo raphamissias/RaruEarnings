@@ -11,7 +11,7 @@ const MenuItem = ({ text, icon, url } : MenuItemProps) => {
 
     return (
         <div className={style.menuItem}>
-            <span className={style.icon}>{ icon }</span>
+            <img src={ icon } className={style.icon} alt="" />
             <Link to={ url }>{ text }</Link>
         </div>
     )

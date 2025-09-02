@@ -32,7 +32,7 @@ const OrderInfo = ({lblText, value, input, icon, placeholder, select}: IOrderInf
 
     return (
         <div className={style.orderInfo}>
-            {icon? <span className={style.icon}>{icon}</span> 
+            {icon? <img src={icon} className={style.icon}></img> 
                 : <label htmlFor="">{lblText}:</label>
             }
             {input ? 
