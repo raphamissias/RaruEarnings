@@ -27,7 +27,7 @@ const OrderInfo = ({lblText, value, input, icon, placeholder, select}: IOrderInf
 
     useEffect(() => {
         getCustomers()
-    }, [customers])
+    }, [])
 
 
     return (

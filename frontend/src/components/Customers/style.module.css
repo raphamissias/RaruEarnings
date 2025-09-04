@@ -30,3 +30,11 @@ main {
     gap: 5px;
     align-self: flex-start;
 }
+
+.error {
+    border: 1px solid red;
+}
+
+.errorMessage {
+    color: red;
+}

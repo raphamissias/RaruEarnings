@@ -11,6 +11,18 @@
     padding: 10px;
 }
 
+.form p {
+    color: red;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.default {
+    border: none;
+}
+
 main {
     height: 90%;
     

@@ -26,7 +26,7 @@ const Orders = () => {
 
     return (
         <section className={style.orders}>
-            <button className={style.addOrder} onClick={() => {setExpanded(!expanded), setItemCount(0)}}>+</button>
+            <button className={style.addOrder} onClick={() => {setExpanded(true), setItemCount(0)}}>+</button>
             <ListOrders></ListOrders>
             {expanded && <div className={style.overlay} onClick={() => setExpanded(false)} />}
             { expanded ? 
