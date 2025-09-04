@@ -24,14 +24,13 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
     
     const taskUpdate = async (id: number, formData: ITaskFormValues) => {
         try {
-            console.log(formData)
-            // const taskValues = taskSchema.parse(formData);
-            // const newTask = updateTask(id, taskValues);
-            // updateNotify(newTask)
+            const taskValues = taskSchema.parse(formData);
+            const newTask = updateTask(id, taskValues);
+            updateNotify(newTask)
             
-            // readTasks();
-            // reset();
-            // closeEditMode();
+            readTasks();
+            reset();
+            closeEditMode();
         } catch (error) {
             console.log(error)
         }
@@ -39,11 +38,10 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
 
     const taskDelete = async (id: number) => {
         try {
-            console.log(id)
-            // const deletedTask = deleteTask(id);
-            // deleteNotify(deletedTask);
+            const deletedTask = deleteTask(id);
+            deleteNotify(deletedTask);
 
-            // readTasks();
+            readTasks();
         } catch (error) {
             console.log(error)
             toast.error("Erro ao deletar tarefa")
