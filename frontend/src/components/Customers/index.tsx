@@ -7,7 +7,6 @@ import { customerSchema } from "../../schemas/customers.schema";
 import { toast, ToastContainer } from "react-toastify";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { AxiosError, AxiosResponse } from "axios";
-import type { ZodError } from "zod";
 
 const Customers = () => {
     const [customers, setCustomers] = useState<ICustomer[]>([]);
