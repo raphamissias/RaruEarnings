@@ -1,5 +1,5 @@
 import z from "zod";
 
 export const customerSchema = z.object({
-    name: z.string().min(3, "O campo nome é obrigatório")
+    name: z.string("O campo nome é obrigatório").min(3, "O nome deve ter no mínimo 3 caracteres")
 });
