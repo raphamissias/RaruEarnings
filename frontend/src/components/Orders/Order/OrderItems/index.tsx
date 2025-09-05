@@ -1,19 +1,19 @@
+import type { IOrderItem, IOrderItemOutput } from "../../../../interfaces/orderItems.interface";
 import style from "./style.module.css";
-import type { IItem } from "../../../../contexts/orders";
 
 interface IOrderItemProps {
-    items: IItem[]
+    items: IOrderItemOutput[]
 }
 
-interface ITask {
+interface ITasksSum {
     quantity: number;
     name: string;
-    value: number
+    value: number;
 }
 
 const OrderItem = ({ items }: IOrderItemProps) => {
 
-    const tasks: ITask[] = []
+    const tasks: ITasksSum[] = []
 
     items.forEach((item) => {
         const existingItem = tasks.find((i) => i.name === item.task.name);

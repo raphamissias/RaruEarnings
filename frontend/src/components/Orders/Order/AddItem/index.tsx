@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import style from "./style.module.css"
-import { readTasks, type ITask } from "../../../../database/tasks";
+import { readTasks } from "../../../../database/tasks";
+import type { ITaskOutput } from "../../../../interfaces/tasks.interface";
 
 const AddItem = () => {
-    const [tasks, setTasks] = useState<ITask[]>([]);
+    const [tasks, setTasks] = useState<ITaskOutput[]>([]);
 
     const getTasks = async () => {
-        const tasksArr: ITask[] = await readTasks();
+        const tasksArr: ITaskOutput[] = await readTasks();
 
         setTasks(tasksArr)
     }

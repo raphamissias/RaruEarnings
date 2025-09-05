@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { read } from "../database/transactions";
 import { DateContext } from "./date";
-import type { ITransaction } from "../database/transactions";
+import type { ITransaction } from "../interfaces/transactions.interface";
 
 interface ITransactionsProviderProps {
     children: React.ReactNode;

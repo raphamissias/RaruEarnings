@@ -5,4 +5,6 @@ export const taskSchema = z.object({
     value: z.coerce.number().positive("O campo valor é obrigatório")
 })
 
+export const taskValueSchema = z.number();
+
 export type TTaskFormValues = z.infer<typeof taskSchema>;

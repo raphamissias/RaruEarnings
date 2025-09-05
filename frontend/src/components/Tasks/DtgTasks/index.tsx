@@ -1,16 +1,16 @@
-import { deleteTask, readTasks, updateTask, type ITask } from "../../../database/tasks";
+import { deleteTask, readTasks, updateTask } from "../../../database/tasks";
 import style from "./style.module.css";
 import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../icons";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { taskSchema } from "../../../schemas/tasks.schema";
-import type { ITaskFormValues } from "../../../interfaces/task.interface";
+import type { ITaskFormValues, ITaskOutput } from "../../../interfaces/tasks.interface";
 import { useForm } from "react-hook-form";
 import type { AxiosError, AxiosResponse } from "axios";
 
 interface IDtgTasksProps {
-    tasks: ITask[];
+    tasks: ITaskOutput[];
 }
 
 const DtgTasks = ({ tasks }: IDtgTasksProps) => {
@@ -60,14 +60,14 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
         setEditMode(false);
     }
 
-    const deleteNotify = (taskDeleteReturn: Promise<AxiosResponse<ITask | AxiosError>>) => {
+    const deleteNotify = (taskDeleteReturn: Promise<AxiosResponse<ITaskOutput | AxiosError>>) => {
         return toast.promise(taskDeleteReturn, {
             pending: 'Deletando tarefa',
             success: 'Tarefa deletada com sucesso!',
         }, { theme: "dark" });
     }
 
-    const updateNotify = (submitReturn: Promise<AxiosResponse<ITask | AxiosError>>) => {
+    const updateNotify = (submitReturn: Promise<AxiosResponse<ITaskOutput | AxiosError>>) => {
         return toast.promise(submitReturn, {
             pending: 'Atualizando tarefa',
             success: 'Tarefa atualizada com sucesso!',

@@ -1,4 +1,4 @@
-import { deleteCustomer, readCustomer, updateCustomer, type ICustomer, type ICustomerOmitId } from "../../../database/customers";
+import { deleteCustomer, readCustomer, updateCustomer } from "../../../database/customers";
 import style from "./style.module.css"
 import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../icons";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { customerSchema } from "../../../schemas/customers.schema";
 import { toast } from "react-toastify";
 import type { AxiosError, AxiosResponse } from "axios";
+import type { ICustomer, ICustomerOmitId } from "../../../interfaces/customers.interface";
 
 interface IDtgCustomersProps {
     customers: ICustomer[];

@@ -58,7 +58,7 @@
     flex-direction: column;
 }
 
-.expanded {
+.editMode {
     width: 60%;
     max-width: 250px;
     position: fixed;

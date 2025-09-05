@@ -1,12 +1,6 @@
 import type { AxiosError } from "axios";
 import { api } from "../api";
-
-export interface ICustomer {
-    id: number;
-    name: string;
-}
-
-export type ICustomerOmitId = Omit<ICustomer, 'id'>
+import type { ICustomer, ICustomerOmitId } from "../interfaces/customers.interface";
 
 export const readCustomer = async (): Promise<ICustomer[]> => {
     try {

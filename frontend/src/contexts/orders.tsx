@@ -1,50 +1,26 @@
 import { createContext, useEffect, useState, useContext } from "react";
-import { api } from "../api";
 import { DateContext } from "./date";
-
-interface ICustomer {
-    id: number;
-    name: string;
-}
-
-interface ITask {
-    id: number;
-    name: string;
-    value: string;
-}
-
-export interface IItem {
-    id: number;
-    task: ITask;
-}
-
-export interface IOrder {
-    id: number;
-    teeths: string;
-    color: string;
-    date: string;
-    customer: ICustomer;
-    items: IItem[];
-}
+import { readOrders } from "../database/orders";
+import type { IOrderOutput } from "../interfaces/orders.interface";
 
 export interface IOrdersProviderProps {
     children: React.ReactNode;
 }
 
 interface IOrdersContext {
-    ordersList: IOrder[];
-    setOrdersList: React.Dispatch<React.SetStateAction<IOrder[] | []>>;
+    ordersList: IOrderOutput[];
+    setOrdersList: React.Dispatch<React.SetStateAction<IOrderOutput[] | []>>;
 }
 
 export const OrdersContext = createContext({} as IOrdersContext);
 
 const OrdersProvider = ({ children }: IOrdersProviderProps) => {
-    const [ordersList, setOrdersList] = useState<IOrder[] | []>([]);
+    const [ordersList, setOrdersList] = useState<IOrderOutput[] | []>([]);
     const { initialDate, finalDate } = useContext(DateContext);
 
     useEffect(() => {
         const loadData = async () => {
-            const { data } = await api.get(`/orders?initialDate=${initialDate}&finalDate=${finalDate}`);
+            const data = await readOrders(initialDate, finalDate);
             
             setOrdersList(data);
         }

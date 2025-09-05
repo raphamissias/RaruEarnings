@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./style.module.css";
-import { readCustomer, type ICustomer } from "../../../../database/customers";
+import { readCustomer } from "../../../../database/customers";
+import type { ICustomer } from "../../../../interfaces/customers.interface";
 
 interface IOrderInfoProps {
     lblText: string;

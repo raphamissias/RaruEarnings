@@ -1,16 +1,16 @@
 import style from "./style.module.css"
 import DtgTasks from "./DtgTasks";
 import { useEffect, useState } from "react";
-import { createTask, readTasks, type ITask } from "../../database/tasks";
+import { createTask, readTasks } from "../../database/tasks";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { taskSchema } from "../../schemas/tasks.schema";
-import type { ITaskFormValues } from "../../interfaces/task.interface";
+import type { ITask, ITaskFormValues, ITaskOutput } from "../../interfaces/tasks.interface";
 import { toast, ToastContainer } from "react-toastify";
 import type { AxiosError, AxiosResponse } from "axios";
 
 const Tasks = () => {
-    const [tasks, setTasks] = useState<ITask[]>([]);
+    const [tasks, setTasks] = useState<ITaskOutput[]>([]);
     const { register, handleSubmit, formState: { errors } } = useForm<ITaskFormValues>({
         resolver: zodResolver(taskSchema)
     });

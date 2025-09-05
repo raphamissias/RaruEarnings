@@ -1,12 +1,13 @@
 import style from "./style.module.css"
 import DtgCustomers from "./DtgCustomers";
 import { useEffect, useState } from "react";
-import { createCustomer, readCustomer, type ICustomer, type ICustomerOmitId } from "../../database/customers";
+import { createCustomer, readCustomer } from "../../database/customers";
 import { useForm } from "react-hook-form";
 import { customerSchema } from "../../schemas/customers.schema";
 import { toast, ToastContainer } from "react-toastify";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { AxiosError, AxiosResponse } from "axios";
+import type { ICustomer, ICustomerOmitId } from "../../interfaces/customers.interface";
 
 const Customers = () => {
     const [customers, setCustomers] = useState<ICustomer[]>([]);

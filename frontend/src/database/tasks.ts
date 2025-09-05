@@ -1,15 +1,8 @@
 import { api } from "../api"
 import type { AxiosError } from "axios";
+import type { ITask, ITaskOmitId, ITaskOutput } from "../interfaces/tasks.interface";
 
-export interface ITask {
-    id: number;
-    name: string;
-    value: number;
-}
-
-export type ITaskOmitId = Omit<ITask, 'id'>
-
-export const readTasks = async (): Promise<ITask[]> => {
+export const readTasks = async (): Promise<ITaskOutput[]> => {
     try {
         const { data } = await api.get("/tasks");
 
