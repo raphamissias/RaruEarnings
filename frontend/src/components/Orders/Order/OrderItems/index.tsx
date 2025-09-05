@@ -1,4 +1,4 @@
-import type { IOrderItem, IOrderItemOutput } from "../../../../interfaces/orderItems.interface";
+import type { IOrderItemOutput } from "../../../../interfaces/orderItems.interface";
 import style from "./style.module.css";
 
 interface IOrderItemProps {

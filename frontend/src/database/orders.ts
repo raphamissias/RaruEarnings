@@ -13,5 +13,11 @@ export const readOrders = async (initialDate: string, finalDate: string) => {
 }
 
 export const createOrder = async (data: IOrder) => {
-
+    try {
+        const newOrder = api.post('/orders', data);
+        return newOrder;
+    } catch (error) {
+        const currentError = error as AxiosError<string>;
+        throw currentError;
+    }
 }
