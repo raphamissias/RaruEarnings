@@ -36,15 +36,18 @@ const OrderInfo = ({lblText, value, input, icon, placeholder, select}: IOrderInf
             {icon? <img src={icon} className={style.icon}></img> 
                 : <label htmlFor="">{lblText}:</label>
             }
+
             {input ? 
                 <input type="text" value={textField} placeholder={placeholder} onChange={e => setTextField(e.target.value)}/>
+            : input === null ? <input placeholder="Não informado" />    
             : select ? 
                 <select name="" id="">
                     {customers.map(item => (
-                        <option value={item.id}>{item.name}</option>
+                        <option>{item.name}</option>
                     ))}
                 </select>
-            : <p>{value}</p> }
+            : value ? <p>{value}</p> : <p>Não informado</p>
+            }
         </div>
     )
 }

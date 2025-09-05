@@ -33,6 +33,7 @@ const Orders = () => {
                 (
                     <div className={`${style.order} ${style.newOrder}`}>
                             <OrderInfo lblText="Cliente" select=" " />
+                            <OrderInfo lblText="Paciente" input=" " />
                             <div className={style.orderItems}>
                                 <AddItem></AddItem>
                                 {addNewItem()}

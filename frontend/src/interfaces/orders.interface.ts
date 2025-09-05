@@ -3,6 +3,7 @@ import type { IOrderItem, IOrderItemOutput } from "./orderItems.interface";
 
 export interface IOrder {
     id: number;
+    patient: string,
     teeths: string;
     color: string;
     date: string;
@@ -12,6 +13,7 @@ export interface IOrder {
 
 export interface IOrderOutput {
     id: number;
+    patient: string,
     teeths: string;
     color: string;
     date: string;

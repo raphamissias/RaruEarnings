@@ -22,7 +22,7 @@ const AddItem = () => {
                 <input type="number" className={style.quantity} placeholder="0" min={1} max={10} defaultValue={1}/>
                 <select name="" id="" className={style.name}>
                     {tasks.map(item => (
-                        <option value={item.id}>{item.name}</option>
+                        <option>{item.name}</option>
                     ))}
                 </select>
             </div>

@@ -2,10 +2,7 @@ import style from "./style.module.css";
 import OrderItem from "./OrderItems";
 import OrderInfo from "./OrderInfo";
 import { useState } from "react";
-import person_gray from "../../../icons/person_gray.svg"
-import dentistry_gray from "../../../icons/dentistry_gray.svg"
-import palette_gray from "../../../icons/palette_gray.svg"
-import date_gray from "../../../icons/date_gray.svg"
+import { group_grayIcon, person_grayIcon, dentistry_grayIcon, palette_grayIcon, date_grayIcon } from "../../../icons";
 import type { IOrderOutput } from "../../../interfaces/orders.interface";
 
 interface IOrderProps {
@@ -32,6 +29,8 @@ const Order = ({ order }: IOrderProps) => {
                 {editMode ? (
                         <>
                             <OrderInfo lblText="Cliente" select={order.customer.name} />
+                            <OrderInfo lblText="Paciente" input={order.patient} />
+
 
                             <div className={style.orderItems}>
                                 <OrderItem items={order.items}/>
@@ -47,8 +46,8 @@ const Order = ({ order }: IOrderProps) => {
                         </>
                     ) : (
                         <>
-                            <OrderInfo lblText="Cliente" value={order.customer.name} icon={ person_gray } />
-                            <OrderInfo lblText="Paciente" icon={ person_gray } />
+                            <OrderInfo lblText="Cliente" value={order.customer.name} icon={ person_grayIcon } />
+                            <OrderInfo lblText="Paciente" value={order.patient} icon={ group_grayIcon } />
                             
                             <div className={style.orderItems}>
                                 <OrderItem items={order.items}/>
@@ -56,9 +55,9 @@ const Order = ({ order }: IOrderProps) => {
 
                             <div id={style.specifies}>
                                 <div className={style.specifies_secondary}>
-                                    <OrderInfo lblText="Dentes" value={order.teeths} icon={ dentistry_gray } />
-                                    <OrderInfo lblText="Cor" value={order.color} icon={ palette_gray } />
-                                    <OrderInfo lblText="Data" value={order.date} icon={ date_gray } />
+                                    <OrderInfo lblText="Dentes" value={order.teeths} icon={ dentistry_grayIcon } />
+                                    <OrderInfo lblText="Cor" value={order.color} icon={ palette_grayIcon } />
+                                    <OrderInfo lblText="Data" value={order.date} icon={ date_grayIcon } />
                                 </div>
                                 <OrderInfo lblText="Total" value={totalTasksValue()} />
                             </div>
