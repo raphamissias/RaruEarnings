@@ -23,7 +23,9 @@ const OrderReadSchema = z.array(z.object({
       return date.toLocaleDateString('pt-BR');
     }),
     customer: CustomerSchema,
-    items: z.array(z.object({
+    items: z.array(
+        z.object({
+        id: z.number(),
         task: TaskReadSchemaObject
     })),
 }));
