@@ -1,4 +1,4 @@
-import type { ICustomer, ICustomerOmitId } from "../interfaces/customers.interface";
+import type { ICustomer } from "../interfaces/customers.interface";
 
 const API_URL = "https://script.google.com/macros/s/AKfycbywDCuDWdqYBUcZ3zSJg-4AV45fEmIt9sz5JxXTi9Jcz7fiG0NTCQMGRdc1t89zdKh0/exec?"
 
