@@ -1,4 +1,4 @@
-import type { IOrderItemInput, IOrderItemOutput } from "./orderItems.interface";
+import type { IOrderItemOutput } from "./orderItems.interface";
 
 export interface IOrder {
     id: number;
