@@ -2,7 +2,7 @@ import type { IOrderFormValues } from "../interfaces/orders.interface";
 
 const API_URL = "https://script.google.com/macros/s/AKfycbwOioJivn_0fW1l6JmDgoMWr8eBwNyD3eVU5zYjBd81kbfkLB9CyizhELljd4-ir80gxg/exec?"
 
-export const readOrders = async (initialDate: string, finalDate: string) => {
+export const readOrders = async (/*initialDate: string, finalDate: string*/) => {
     try {
         const response = await fetch(`${API_URL}path=orders&action=read`, {
             headers: {

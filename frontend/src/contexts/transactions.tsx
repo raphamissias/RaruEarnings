@@ -24,7 +24,7 @@ const TransactionsProvider = ({ children }: ITransactionsProviderProps) => {
     useEffect(() => {
         const readTransactions = async () => {
             try {
-                const transactions = await getTransactions(initialDate, finalDate);
+                const transactions = await getTransactions(/*initialDate, finalDate*/);
     
                 setTransactionsList(transactions);
             } catch (error) {  
