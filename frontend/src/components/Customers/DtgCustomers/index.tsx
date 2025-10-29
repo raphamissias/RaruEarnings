@@ -25,7 +25,7 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
     const customerUpdate = async (id: number, formData: ICustomerOmitId) => {
         try {
             const customerValues = customerSchema.parse(formData);
-            const newCustomer = updateCustomer(id, customerValues);
+            const newCustomer = updateCustomer(id, customerValues.name, customerValues.contact);
             updateNotify(newCustomer)
             
             readCustomer();
@@ -39,9 +39,9 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
     const customerDelete = async (id: number) => {
         try {
             const deletedCustomer = deleteCustomer(id);
+            
             deleteNotify(deletedCustomer);
-
-            readCustomer();
+            setDeleteDialog(false);
         } catch (error) {
             console.log(error)
             toast.error("Erro ao deletar cliente")
@@ -83,6 +83,7 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
             <div className={style.dtgHeader}>
                 <span className={style.column1}>ID</span>
                 <span className={style.column2}>Nome</span>
+                <span className={style.column3}>Contato</span>
             </div>
             {
                 customers.map((item) => (
@@ -90,13 +91,17 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
                         <span className={style.column1}>{ item.id }</span>
 
                         {editMode && item.id === currentCustomer ? (
-                            <form onSubmit={handleSubmit((formData) => customerUpdate(item.id, formData))} className={style.formColumn}>
-                                <input type="text" placeholder={item.name} className={errors.name ? style.error : ""} {...register("name")} />
-                                <button type="submit"><img src={saveIcon} alt="" /></button>
-                            </form>
+                            <>
+                                <form onSubmit={handleSubmit((formData) => customerUpdate(item.id, formData))} className={style.formColumn}>
+                                    <input type="text" placeholder={item.name} className={errors.name ? `${style.error} ${style.column2}` : style.column2} {...register("name")} />
+                                    <input type="text" placeholder={item.contact} className={errors.contact ? `${style.error} ${style.column3}` : style.column3} {...register("contact")} />
+                                    <button type="submit"><img src={saveIcon} alt="save" /></button>
+                                </form>
+                            </>
                         ) : (
                             <>
                                 <span className={style.column2}>{item.name}</span>
+                                <span className={style.column3}>{item.contact}</span>
                             </>
                         )}
 

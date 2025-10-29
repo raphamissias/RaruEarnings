@@ -18,7 +18,15 @@
 }
 
 .column2 {
-    width: 50%;
+    width: 40%;
+}
+
+.formColumn input {
+    margin-left: 10px;
+}
+
+.column3 input {
+    width: 20px;
 }
 
 .dtgLine {
@@ -47,7 +55,12 @@
 .formColumn {
     width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+
+.formColumn .column3 {
+    width: 35%;
 }
 
 .formColumn input {
