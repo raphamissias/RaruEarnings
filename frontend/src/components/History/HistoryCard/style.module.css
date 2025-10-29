@@ -44,10 +44,14 @@
 }
 
 
-form {
+.container {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.container button {
+    margin-top: 5px;
 }
 
 .overlay {

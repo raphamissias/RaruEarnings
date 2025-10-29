@@ -68,7 +68,7 @@ const HistoryCard = ({ mode, transaction, setItemMode}: IHistoryCardProps) => {
                     <div className={`${style.modal} ${style.transactionCard}`}>
 
                         <button id={style.closeButton} onClick={() => setItemMode("view")}>X</button>
-                        <form onSubmit={handleSubmit(createTransaction)} >
+                        <form className={style.container} onSubmit={handleSubmit(createTransaction)} >
                             <Input label="Nome:" register={register("name")} ></Input>
                             <Input label="Valor:" register={register("value")} error={errors.value? true : false} ></Input>
                             { errors.value ? <p className={style.errorMessage} >{ errors.value.message?.toString() }</p> : null}
