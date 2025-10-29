@@ -1,4 +1,4 @@
-import { deleteCustomer, readCustomer, updateCustomer } from "../../../database/customers";
+import { deleteCustomer, getCustomer, patchCustomer } from "../../../database/customers";
 import style from "./style.module.css"
 import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../icons";
 import { useState } from "react";
@@ -6,8 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { customerSchema } from "../../../schemas/customers.schema";
 import { toast } from "react-toastify";
-import type { AxiosError, AxiosResponse } from "axios";
 import type { ICustomer, ICustomerOmitId } from "../../../interfaces/customers.interface";
+import { notifyCustomerDelete, notifyCustomerUpdate } from "../../../notifications/customers";
 
 interface IDtgCustomersProps {
     customers: ICustomer[];
@@ -25,10 +25,10 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
     const customerUpdate = async (id: number, formData: ICustomerOmitId) => {
         try {
             const customerValues = customerSchema.parse(formData);
-            const newCustomer = updateCustomer(id, customerValues.name, customerValues.contact);
-            updateNotify(newCustomer)
+            const newCustomer = patchCustomer(id, customerValues.name, customerValues.contact);
+            notifyCustomerUpdate(newCustomer)
             
-            readCustomer();
+            getCustomer();
             reset();
             closeEditMode();
         } catch (error) {
@@ -40,7 +40,7 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
         try {
             const deletedCustomer = deleteCustomer(id);
             
-            deleteNotify(deletedCustomer);
+            notifyCustomerDelete(deletedCustomer);
             setDeleteDialog(false);
         } catch (error) {
             console.log(error)
@@ -56,26 +56,6 @@ const DtgCustomers = ({ customers }: IDtgCustomersProps) => {
     const closeEditMode = () => {
         setCurrentCustomer(0);
         setEditMode(false);
-    }
-
-    const deleteNotify = (customerDeleteReturn: Promise<AxiosResponse<ICustomer | AxiosError>>) => {
-        return toast.promise(customerDeleteReturn, {
-            pending: 'Deletando cliente',
-            success: 'Cliente deletado com sucesso!',
-        }, { theme: "dark" });
-    }
-
-    const updateNotify = (submitReturn: Promise<AxiosResponse<ICustomer | AxiosError>>) => {
-        return toast.promise(submitReturn, {
-            pending: 'Atualizando cliente',
-            success: 'Cliente atualizado com sucesso!',
-            error: {
-                render({ data }) {
-                    const error = data as AxiosError<{ message?: string }>;
-                    return error.response?.data?.message || "Erro ao atualizar cliente";
-                }
-            }
-        }, { theme: "dark", closeOnClick: true});
     }
 
     return (
