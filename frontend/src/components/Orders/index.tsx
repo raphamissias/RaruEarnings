@@ -63,7 +63,7 @@ const Orders = () => {
     return (
         <section className={style.orders}>
             <button className={style.addOrderButton} onClick={() => {setCreateMode(true)}}>+</button>
-            { createMode && <OrderCard mode="create" createOrder={createOrder} />}
+            { createMode && <OrderCard mode="create" createOrder={createOrder} setCreateMode={setCreateMode} />}
 
             <ul className={style.listOrders}>
                 {ordersList ? ordersList.map(item => 

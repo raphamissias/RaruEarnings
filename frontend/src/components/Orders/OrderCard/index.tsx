@@ -19,9 +19,10 @@ interface IOrderCardProps {
     order?: IOrderOutput;
     mode: "view" | "edit" | "create",
     createOrder: SubmitHandler<IOrderFormValues>,
+    setCreateMode?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const OrderCard = ({ order, mode, createOrder}: IOrderCardProps) => {
+const OrderCard = ({ order, mode, createOrder, setCreateMode}: IOrderCardProps) => {
     const [cardMode, setCardMode] = useState(mode);
     const { customers } = useContext(CustomersContext);
     const { tasks } = useContext(TasksContext);
@@ -149,9 +150,9 @@ const OrderCard = ({ order, mode, createOrder}: IOrderCardProps) => {
                         <button type="submit" className={style.defaultButton}>Atualizar nota</button>
                     </form>
 
-                : cardMode == "create" ? 
+                : cardMode == "create" && setCreateMode ? 
                     <form onSubmit={handleSubmit(createOrder)} className={`${style.orderCard} ${style.createEditMode}`} >
-                        <button id={style.closeButton} onClick={() => {setCardMode("view"), reset()}}>X</button>
+                        <button id={style.closeButton} onClick={() => {setCardMode("view"), setCreateMode(false), reset()}}>X</button>
                         <OrderInput lblText="Cliente" selectCustomer=" " register={register("customer")} error={errors.customer ? true : false} />
                         {errors.customer ? <p className={style.errorMessage}>{errors.customer.message}</p> : null}
                         <OrderInput lblText="Paciente" register={register("patient")} error={errors.patient ? true : false} />           
