@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { readCustomer } from "../database/customers";
+import { getCustomer } from "../database/customers";
 import type { ICustomer } from "../interfaces/customers.interface";
 
 interface ICustomersContext {
@@ -17,7 +17,7 @@ export const CustomersProvider = ({ children }: ICustomersProviderProps) => {
 
     useEffect(() => {
         const loadCustomers = async () => {
-            const customers = await readCustomer();
+            const customers = await getCustomer();
             setCustomers(customers);
         }
 
