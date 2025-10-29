@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { read } from "../database/transactions";
+import { getTransactions } from "../database/transactions";
 import { DateContext } from "./date";
 import type { ITransaction } from "../interfaces/transactions.interface";
 
@@ -10,6 +10,8 @@ interface ITransactionsProviderProps {
 interface ITransactionsContext {
     transactionsList: ITransaction[];
     setTransactionsList: React.Dispatch<React.SetStateAction<ITransaction[]>>
+    refreshTransactions: boolean;
+    setRefreshTransactions: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const TransactionsContext = createContext({} as ITransactionsContext);
@@ -17,19 +19,24 @@ export const TransactionsContext = createContext({} as ITransactionsContext);
 const TransactionsProvider = ({ children }: ITransactionsProviderProps) => {
     const [transactionsList, setTransactionsList] = useState<ITransaction[] | []>([]);
     const { initialDate, finalDate } = useContext(DateContext);
+    const [ refreshTransactions, setRefreshTransactions ] = useState<boolean>(false);
 
     useEffect(() => {
         const readTransactions = async () => {
-            const transactions = await read(initialDate, finalDate);
-
-            setTransactionsList(transactions);
+            try {
+                const transactions = await getTransactions(initialDate, finalDate);
+    
+                setTransactionsList(transactions);
+            } catch (error) {  
+                console.log(error)
+            }
         }
 
         readTransactions();
-    }, [initialDate, finalDate])
+    }, [initialDate, finalDate, refreshTransactions]);
 
     return (
-        <TransactionsContext.Provider value={{ transactionsList, setTransactionsList }}>
+        <TransactionsContext.Provider value={{ transactionsList, setTransactionsList, refreshTransactions, setRefreshTransactions }}>
             { children }
         </TransactionsContext.Provider>
     )

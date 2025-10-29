@@ -10,6 +10,8 @@ export interface IOrdersProviderProps {
 interface IOrdersContext {
     ordersList: IOrderOutput[];
     setOrdersList: React.Dispatch<React.SetStateAction<IOrderOutput[] | []>>;
+    refreshOrders: boolean;
+    setRefreshOrders: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const OrdersContext = createContext({} as IOrdersContext);
@@ -17,19 +19,20 @@ export const OrdersContext = createContext({} as IOrdersContext);
 const OrdersProvider = ({ children }: IOrdersProviderProps) => {
     const [ordersList, setOrdersList] = useState<IOrderOutput[] | []>([]);
     const { initialDate, finalDate } = useContext(DateContext);
+    const [refreshOrders, setRefreshOrders] = useState(false);
 
     useEffect(() => {
         const loadData = async () => {
-            const data = await readOrders(initialDate, finalDate);
-            
-            setOrdersList(data);
+            const response = await readOrders(initialDate, finalDate);
+
+            setOrdersList(response);
         }
 
         loadData();
-    }, [initialDate, finalDate]);
+    }, [initialDate, finalDate, refreshOrders]);
 
     return (
-        <OrdersContext.Provider value={{ ordersList, setOrdersList }}>
+        <OrdersContext.Provider value={{ ordersList, setOrdersList, refreshOrders, setRefreshOrders }}>
             { children }
         </OrdersContext.Provider>
     );
