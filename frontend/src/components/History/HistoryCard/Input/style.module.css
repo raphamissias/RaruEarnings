@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container input[type="text"] {
+    width: 50%;
+    text-align: right;
+}
+
+.errorInput {
+    border: solid 1px rgb(255, 90, 90);
+}

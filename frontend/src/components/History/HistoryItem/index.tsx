@@ -1,26 +1,37 @@
+import { useState } from "react";
+import HistoryCard from "../HistoryCard";
 import style from "./style.module.css"
+import type { ITransaction } from "../../../interfaces/transactions.interface";
 
 interface IHistoryItemProps {
-    name: string;
-    date: string;
-    value: string;
-    isDiscount: boolean;
+    mode: "view" | "create" | "update";
+    transaction: ITransaction;
+    setTransactionModal?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const HistoryItem = ({name, date, value, isDiscount}: IHistoryItemProps) => {
+const HistoryItem = ({mode, transaction}: IHistoryItemProps) => {
+    const [ itemMode, setItemMode ] = useState<string>(mode);
 
     return (
-        <li className={style.item}>
-            <div>
-                <p className={style.name}>{ name }</p>
-            </div>
-            <div>
-                <p className={style.date}>{ date }</p>
-            </div>
-            <div>
-                <p className={isDiscount? style.debit : style.value}>{ isDiscount? "-" + value : "+" + value }</p>
-            </div>
-        </li>
+        <>
+            {
+                itemMode == "view" ? 
+                <li className={style.item} onClick={() => setItemMode("update")}>
+                    <div>
+                        <p className={style.name}>{ transaction.name }</p>
+                    </div>
+                    <div>
+                        <p className={style.date}>{ transaction.date }</p>
+                    </div>
+                    <div>
+                        <p className={transaction.isDiscount? style.debit : style.value}>{ transaction.isDiscount? "-" + transaction.value : "+" + transaction.value }</p>
+                    </div>
+                </li>
+                : itemMode == "update" ? 
+                    <HistoryCard transaction={transaction} mode="update" setItemMode={setItemMode} />
+                : null
+            }
+        </>
     )
 };
 

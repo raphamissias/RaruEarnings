@@ -29,3 +29,7 @@
     justify-self: flex-end;
     color: red;
 }
+
+li :hover {
+    cursor: pointer;
+}
