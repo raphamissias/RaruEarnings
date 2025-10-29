@@ -1,44 +1,65 @@
-import { api } from "../api"
-import type { AxiosError } from "axios";
-import type { ITask, ITaskOmitId, ITaskOutput } from "../interfaces/tasks.interface";
+const API_URL = "https://script.google.com/macros/s/AKfycbywDCuDWdqYBUcZ3zSJg-4AV45fEmIt9sz5JxXTi9Jcz7fiG0NTCQMGRdc1t89zdKh0/exec?"
 
-export const readTasks = async (): Promise<ITaskOutput[]> => {
+export const readTasks = async () => {
     try {
-        const { data } = await api.get("/tasks");
+        const response = await fetch(`${API_URL}path=tasks&action=read`);
+
+        const { data, status } = await response.json();
+        
+        if (status != 200) {
+            throw new Error(data.message);
+        }
 
         return data;
     } catch (error) {
-        console.log(error);
-        return [];
+        throw error;
     }
 }
 
-export const createTask = async (data: ITaskOmitId) => {
+export const createTask = async (name: string, value: number) => {
     try {
-        const newTask = await api.post<ITask>("/tasks", data);
-        return newTask;
+        const response = await fetch(`${API_URL}path=tasks&action=create&name=${name}&value=${value}`);
+        
+        const { data, status } = await response.json();
+        
+        if (status != 201) {
+            throw new Error(data.message);
+        }
+
+        return data;
     } catch (error) {
-        const currentError = error as AxiosError<string>;
-        throw currentError;
+        throw error;
     }
 }
 
 export const deleteTask = async (id: number) => {
     try {
-        const deletedTask = await api.delete(`/tasks/${id}`);
-        return deletedTask
+        const response = await fetch(`${API_URL}path=tasks&action=delete&id=${id}`);
+
+        const { data, status } = await response.json();
+        
+        if (status != 204) {
+            throw new Error(data.message);
+        }
+
+        return data;
     } catch (error) {
-        const currentError = error as AxiosError<string>;
-        throw currentError;
+        throw error;
     }
 }
 
-export const updateTask = async (id: number, data: ITaskOmitId) => {
+export const updateTask = async (id: number, name: string, value: number) => {
     try {
-        const updatedTask = await api.patch(`/tasks/${id}`, data);
-        return updatedTask;
+        const response = await fetch(`${API_URL}path=tasks&action=update&id=${id}&name=${name}&${value}`);
+
+        const { data, status } = await response.json();
+        
+        if (status != 201) {
+            throw new Error(data.message);
+        }
+
+        return data;
     } catch (error) {
-        const currentError = error as AxiosError<string>;
-        throw currentError;
+        throw error;
     }
 }
