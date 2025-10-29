@@ -1,16 +1,16 @@
-import { deleteTask, readTasks, updateTask } from "../../../database/tasks";
+import { deleteTask, updateTask } from "../../../database/tasks";
 import style from "./style.module.css";
 import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../icons";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { taskSchema } from "../../../schemas/tasks.schema";
-import type { ITaskFormValues, ITaskOutput } from "../../../interfaces/tasks.interface";
+import { taskFormSchema, taskSchema } from "../../../schemas/tasks.schema";
+import type { ITask, ITaskFormValues } from "../../../interfaces/tasks.interface";
 import { useForm } from "react-hook-form";
-import type { AxiosError, AxiosResponse } from "axios";
+import type { AxiosError } from "axios";
 
 interface IDtgTasksProps {
-    tasks: ITaskOutput[];
+    tasks: ITask[];
 }
 
 const DtgTasks = ({ tasks }: IDtgTasksProps) => {
@@ -18,8 +18,8 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
     const [currentTaskEdit, setCurrentTaskEdit] = useState(0);
     const [deleteDialog, setDeleteDialog] = useState(false);
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<ITaskFormValues>({
-        resolver: zodResolver(taskSchema)
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: zodResolver(taskFormSchema)
     });
     
     const taskUpdate = async (id: number, formData: ITaskFormValues) => {
@@ -28,8 +28,6 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
             const taskValues = taskSchema.parse(formData);
             const newTask = updateTask(id, taskValues);
             updateNotify(newTask)
-            
-            readTasks();
             reset();
             closeEditMode();
         } catch (error) {
@@ -39,11 +37,8 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
 
     const taskDelete = async (id: number) => {
         try {
-            console.log(id)
-            const deletedTask = deleteTask(id);
-            deleteNotify(deletedTask);
-
-            readTasks();
+            const response = deleteTask(id);
+            deleteNotify(response);
         } catch (error) {
             console.log(error)
             toast.error("Erro ao deletar tarefa")
@@ -60,14 +55,14 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
         setEditMode(false);
     }
 
-    const deleteNotify = (taskDeleteReturn: Promise<AxiosResponse<ITaskOutput | AxiosError>>) => {
+    const deleteNotify = (taskDeleteReturn: Promise<Response>) => {
         return toast.promise(taskDeleteReturn, {
             pending: 'Deletando tarefa',
             success: 'Tarefa deletada com sucesso!',
         }, { theme: "dark" });
     }
 
-    const updateNotify = (submitReturn: Promise<AxiosResponse<ITaskOutput | AxiosError>>) => {
+    const updateNotify = (submitReturn: Promise<Response>) => {
         return toast.promise(submitReturn, {
             pending: 'Atualizando tarefa',
             success: 'Tarefa atualizada com sucesso!',
@@ -96,8 +91,8 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
                         {editMode && item.id === currentTaskEdit ? (
                             <form onSubmit={handleSubmit((formData) => taskUpdate(item.id, formData))} className={style.formColumn}>
                                 <input type="text" placeholder={item.name} className={`${style.column2} ${errors.name ? style.error : ""}`} {...register("name")} />
-                                <input type="number" step=".01" placeholder={item.value.toString()} className={`${style.column3} ${errors.value ? `${style.valueInput} ${style.error}` : `${style.valueInput}`}` } {...register("value")} />
-                                <button type="submit"><img src={saveIcon} alt="" /></button>
+                                <input type="number" step="0.01" placeholder={item.value.toString()} className={`${style.column3} ${errors.value ? `${style.valueInput} ${style.error}` : `${style.valueInput}`}` } {...register("value", { valueAsNumber: true })} />
+                                {/* <button type="submit"><img src={saveIcon} alt="" /></button> */}
                             </form>
                         ) : (
                             <>
@@ -108,7 +103,10 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
 
                         <div className={style.buttons}>
                             { editMode && item.id == currentTaskEdit 
-                                ? <button onClick={() => closeEditMode()}><img src={ closeIcon } alt="cancel" /></button>
+                                ? <>
+                                    <button type="submit"><img src={saveIcon} alt="" /></button>
+                                    <button onClick={() => closeEditMode()}><img src={ closeIcon } alt="cancel" /></button>
+                                </>
                                 : <button onClick={() => openEditMode(item.id)}><img src={ editIcon } alt="edit" /></button> 
                             }
 

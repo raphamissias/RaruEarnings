@@ -13,6 +13,11 @@
     display: flex;
 }
 
+form {
+    display: flex;
+    flex-direction: row;
+}
+
 .column1 {
     width: 10%;
 }

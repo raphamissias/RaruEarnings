@@ -1,48 +1,38 @@
 import style from "./style.module.css"
 import DtgTasks from "./DtgTasks";
-import { useEffect, useState } from "react";
-import { createTask, readTasks } from "../../database/tasks";
+import { useContext } from "react";
+import { createTask } from "../../database/tasks";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { taskSchema } from "../../schemas/tasks.schema";
-import type { ITask, ITaskFormValues, ITaskOutput } from "../../interfaces/tasks.interface";
+import { taskFormSchema, taskSchema } from "../../schemas/tasks.schema";
+import type { ITaskFormValues } from "../../interfaces/tasks.interface";
 import { toast, ToastContainer } from "react-toastify";
-import type { AxiosError, AxiosResponse } from "axios";
+import { TasksContext } from "../../contexts/tasks";
 
 const Tasks = () => {
-    const [tasks, setTasks] = useState<ITaskOutput[]>([]);
     const { register, handleSubmit, formState: { errors } } = useForm<ITaskFormValues>({
-        resolver: zodResolver(taskSchema)
+        resolver: zodResolver(taskFormSchema)
     });
 
-    const getTasks = async () => {
-        const tasksArr = await readTasks();
-        setTasks(tasksArr);
-    }
+    const { tasks, loadTasks } = useContext(TasksContext);
 
     const submit = async (formData: ITaskFormValues) => {
         try {
             const taskValues = taskSchema.parse(formData);
-            const newTask = createTask(taskValues);
-            registerNotify(newTask)
-            getTasks();
+            const response = createTask(taskValues);
+            registerNotify(response);
         } catch (error) {
             console.log(error)
         }
     }
 
-    useEffect(() => {
-        getTasks();
-    }, [tasks])
-
-    const registerNotify = (submitReturn: Promise<AxiosResponse<ITask | AxiosError>>) => {
+    const registerNotify = (submitReturn: Promise<Response>) => {
         return toast.promise(submitReturn, {
             pending: 'Cadastrando tarefa',
             success: 'Tarefa cadastrada com sucesso!',
             error: {
                 render({ data }) {
-                    const error = data as AxiosError<{ message?: string }>;
-                    return error.response?.data?.message || "Erro ao cadastrar tarefa";
+                    return `${data}`;
                 }
             }
         }, { theme: "dark", closeOnClick: true});
