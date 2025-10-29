@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { transactionFormSchema } from "../../../schemas/transactions.schema";
 import type { ITransaction, ITransactionFormValues } from "../../../interfaces/transactions.interface";
 import { patchTransaction, postTransaction } from "../../../database/transactions";
-import { toast } from "react-toastify";
 import { useContext } from "react";
 import { TransactionsContext } from "../../../contexts/transactions";
+import { notifyTransactionCreate, notifyTransactionUpdate } from "../../../notifications/transactions";
 
 interface IHistoryCardProps {
     mode: "create" | "update";
@@ -59,30 +59,6 @@ const HistoryCard = ({ mode, transaction, setItemMode}: IHistoryCardProps) => {
     const getCurrentData = () => {
         const currentDate = new Date();
         return new Intl.DateTimeFormat('pt-BR').format(currentDate);
-    }
-
-    const notifyTransactionCreate = async (submitReturn: Promise<Response>) => {
-        toast.promise(submitReturn, {
-            pending: "Criando lançamento",
-            success: "Lançamento criado com sucesso!",
-            error: {
-                render({ data }) {
-                    return `${data}`
-                }
-            }
-        }, { theme: "dark" });
-    }
-
-    const notifyTransactionUpdate = async (submitReturn: Promise<Response>) => {
-        toast.promise(submitReturn, {
-            pending: "Atualizando lançamento",
-            success: "Lançamento atualizado com sucesso!",
-            error: {
-                render({ data }) {
-                    return `${data}`
-                }
-            }
-        }, { theme: "dark" });
     }
 
     return (
