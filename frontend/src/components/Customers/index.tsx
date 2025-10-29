@@ -17,13 +17,13 @@ const Customers = () => {
 
     const getCustomers = async () => {
         const customersArr = await readCustomer();
-        setCustomers(customersArr)
+        setCustomers(customersArr);
     }
 
     const submit = async (formData: ICustomerOmitId) => {
         try {
             const customer = customerSchema.parse(formData);
-            const newCustomer = createCustomer(customer);
+            const newCustomer = createCustomer(customer.name, customer.contact);
             notify(newCustomer);
             getCustomers();
         } catch (error) {
@@ -33,7 +33,7 @@ const Customers = () => {
 
     useEffect(() => {
         getCustomers();
-    }, [customers])
+    }, [])
 
 const notify = (submitReturn: Promise<AxiosResponse<ICustomer | AxiosError>>) => 
     toast.promise(submitReturn, {
@@ -41,8 +41,7 @@ const notify = (submitReturn: Promise<AxiosResponse<ICustomer | AxiosError>>) =>
         success: 'Cliente cadastrado com sucesso!',
         error: {
             render({ data }) {
-                const error = data as AxiosError<{ message?: string }>
-                return error.response?.data?.message || "Erro ao cadastrar cliente";
+                return `Erro: ${data}`
             }
         }
     }, { theme: "dark" });
