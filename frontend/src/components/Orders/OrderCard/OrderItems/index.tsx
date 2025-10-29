@@ -3,10 +3,9 @@ import style from "./style.module.css";
 import { deleteIcon, checkIcon } from "../../../../icons";
 import OrderItemInput from "./OrderItemInput";
 import { type UseFormRegister, type UseFormReset } from "react-hook-form";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import type { IOrderFormValues } from "../../../../interfaces/orders.interface";
 import { deleteOrderItem } from "../../../../database/orderItems";
-import { toast } from "react-toastify";
 import { OrdersContext } from "../../../../contexts/orders";
 import { notifyOrderItemDelete } from "../../../../notifications/orderItems";
 
