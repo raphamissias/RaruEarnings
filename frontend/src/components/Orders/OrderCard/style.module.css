@@ -2,7 +2,7 @@
     height: 1rem;
 }
 
-.order {
+.orderCard {
     background: linear-gradient(to bottom, #5936B4, #362A84);
     border: 1px solid transparent;
     border-radius: 10px;
@@ -11,31 +11,25 @@
     color: #F8F9FA;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     transition: margin 0.2s ease-in-out, transform 0.2s ease-in-out;
     transform-origin: center center;
 }
 
-.order:hover {
-    cursor: pointer;
-    border-color: #646cff;
-}
-
-.order ul {
-    display: flex;
-    justify-content: space-between;
-}
-
-.order input {
-    max-width: 7rem;
+.orderCard input {
+    width: 8rem;
     justify-items: end;
 }
 
-.order button {
+.orderCard button {
     width: 5rem;
     align-self: flex-end;
-    background: #5936B4;
     border: black;
+}
+
+.orderCard:hover {
+    cursor: pointer;
+    border-color: #646cff;
 }
 
 .orderItems {
@@ -44,11 +38,11 @@
     flex-direction: column;
 }
 
-#specifies {
+.specifies {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 }
 
 .specifies_secondary {
@@ -56,16 +50,23 @@
 
     display: flex;
     flex-direction: column;
+
+    margin: 0 0 10px;
 }
 
-.editMode {
+.createEditMode {
     width: 60%;
     max-width: 250px;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
+}
+
+.createEditMode:hover {
+    border: none;
+    cursor: default;
 }
 
 .overlay {
@@ -78,8 +79,29 @@
   z-index: 998;
 }
 
-.order select {
+.orderCard select {
     height: 1.7rem;
     width: 7.7rem;
     border-radius: 5px;
+}
+
+.defaultButton {
+    background-color: #5936B4;
+}
+
+#closeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 28px;
+    background-color: #5936B4;
+    border-bottom: solid rgba(0, 0, 0, 0.4);
+    border-right: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.errorMessage {
+    font-weight: 600;
+    color: rgb(255, 90, 90);
+    align-self: flex-end;
 }

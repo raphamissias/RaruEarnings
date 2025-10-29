@@ -1,0 +1,21 @@
+.icon {
+  height: 1.1rem;
+}
+
+.orderInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderInfo input {
+  justify-items: end;
+}
+
+select {
+  width: 9.6rem;
+}
+
+.errorInput {
+    border: solid 1px rgb(255, 90, 90);
+}
