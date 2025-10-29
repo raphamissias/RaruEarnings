@@ -2,6 +2,7 @@ import style from "./style.module.css";
 import { DateContext } from "../../contexts/date";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { searchIcon } from "../../icons";
 
 interface IDateFormValues {
     initial: string;
@@ -31,7 +32,7 @@ const Date = () => {
             <input type="date" {...register("initial")} />
             <label htmlFor="">a</label>
             <input type="date" {...register("final")} />
-            <button type="submit" className={style.icon}>search</button>
+            <button type="submit" className={style.icon}><img src={searchIcon} alt="search" /></button>
         </form>
     )
 };

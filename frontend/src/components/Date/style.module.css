@@ -1,9 +1,12 @@
 .date {
+    max-width: 350px;
     display: flex;
+    flex-direction: row;
+
     align-items: center;
-    justify-items: center;
-    gap: 10px;
-    margin: 15px 0 30px;
+    justify-content: space-between;
+    
+    margin: 0 auto 30px;
 }
 
 .date input {
@@ -11,17 +14,6 @@
 }
 
 .date button {
-    padding: 0.5rem 1rem;
-}
-
-.icon {
-  font-family: 'Material Symbols Outlined';
-  font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 20;
-  font-size: 1rem;
-  display: inline-block;
-  line-height: 1;
+    padding: 0.5rem 0.7rem;
+    display: flex;
 }
