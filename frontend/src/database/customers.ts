@@ -2,7 +2,7 @@ import type { ICustomer } from "../interfaces/customers.interface";
 
 const API_URL = "https://script.google.com/macros/s/AKfycbywDCuDWdqYBUcZ3zSJg-4AV45fEmIt9sz5JxXTi9Jcz7fiG0NTCQMGRdc1t89zdKh0/exec?"
 
-export const readCustomer = async (): Promise<ICustomer[]> => {
+export const getCustomer = async (): Promise<ICustomer[]> => {
     try {
         const response = await fetch(`${API_URL}path=customers&action=read`, {
             headers: {
@@ -22,7 +22,7 @@ export const readCustomer = async (): Promise<ICustomer[]> => {
     }
 }
 
-export const createCustomer = async (name: string, contact: string) => {
+export const postCustomer = async (name: string, contact?: string) => {
     try {
         const response = await fetch(`${API_URL}path=customers&action=create&name=${name}&contact=${contact}`, {
             headers: {
@@ -62,7 +62,7 @@ export const deleteCustomer = async (id: number) => {
     }
 }
 
-export const updateCustomer = async (id: number, name: string, contact: string) => {
+export const patchCustomer = async (id: number, name?: string, contact?: string) => {
     try {
         const response = await fetch(`${API_URL}path=customers&action=update&id=${id}&name=${name}&contact=${contact}`, {
             headers: {
