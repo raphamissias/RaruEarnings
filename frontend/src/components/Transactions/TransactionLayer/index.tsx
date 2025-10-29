@@ -1,11 +1,11 @@
 import style from "./style.module.css"
 
-interface ItransactionSectionProps {
+interface ItransactionLayerProps {
     label: string;
     value: string;
 }
 
-const TransactionSection = ({ label, value }: ItransactionSectionProps) => {
+const TransactionLayer = ({ label, value }: ItransactionLayerProps) => {
 
     return (
         <div>
@@ -18,4 +18,4 @@ const TransactionSection = ({ label, value }: ItransactionSectionProps) => {
     )
 }
 
-export default TransactionSection;
+export default TransactionLayer;

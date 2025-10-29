@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import style from "./style.module.css";
-import TransactionSection from "./TransactionSection";
+import TransactionLayer from "./TransactionLayer";
 import { OrdersContext } from "../../contexts/orders";
 import { TransactionsContext } from "../../contexts/transactions";
 
@@ -13,7 +13,7 @@ const Transactions = () => {
 
         ordersList ? ordersList.map((order) => {
             order.items.forEach((item) => {
-                totalValue += parseFloat(item.task.value)
+                totalValue += Number(item.task.value)
             });
         }): null;
 
@@ -38,10 +38,10 @@ const Transactions = () => {
 
         transactionsList ? transactionsList.map((item) => {
             if (item.isDiscount == false) {
-                totalReceived += parseFloat(item.value)
+                totalReceived += parseFloat(item.value);
             } else {
-                const value = item.value.replace(",", ".") ;
-                totalDiscount += parseFloat(value)
+                // const value = item.value.replace(",", ".");
+                totalDiscount += parseFloat(item.value);
             }
         }): null;
 
@@ -62,10 +62,10 @@ const Transactions = () => {
     return (
         <section className={style.transactions}>
             <div className={style.transactionsValues}>
-                <TransactionSection label="Total de Trabalhos" value={totalWork() ? totalWork().toString() : "0"} />
-                <TransactionSection label="Salário" value={totalSalary()} />
-                <TransactionSection label="Valor recebido" value={totalReceived()} />
-                <TransactionSection label="Débito/A receber" value={debitToReceive().toString()} />
+                <TransactionLayer label="Total de Trabalhos" value={totalWork() ? totalWork().toString() : "0"} />
+                <TransactionLayer label="Salário" value={totalSalary()} />
+                <TransactionLayer label="Valor recebido" value={totalReceived()} />
+                <TransactionLayer label="Débito/A receber" value={debitToReceive().toString()} />
             </div>
         </section>
     )
