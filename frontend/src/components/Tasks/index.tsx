@@ -14,12 +14,12 @@ const Tasks = () => {
         resolver: zodResolver(taskFormSchema)
     });
 
-    const { tasks, loadTasks } = useContext(TasksContext);
+    const { tasks } = useContext(TasksContext);
 
     const submit = async (formData: ITaskFormValues) => {
         try {
             const taskValues = taskSchema.parse(formData);
-            const response = createTask(taskValues);
+            const response = createTask(taskValues.name, taskValues.value);
             registerNotify(response);
         } catch (error) {
             console.log(error)

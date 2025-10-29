@@ -26,7 +26,7 @@ const DtgTasks = ({ tasks }: IDtgTasksProps) => {
         try {
             console.log(formData)
             const taskValues = taskSchema.parse(formData);
-            const newTask = updateTask(id, taskValues);
+            const newTask = updateTask(id, taskValues.name, taskValues.value);
             updateNotify(newTask)
             reset();
             closeEditMode();
