@@ -23,7 +23,7 @@ const OrdersProvider = ({ children }: IOrdersProviderProps) => {
 
     useEffect(() => {
         const loadData = async () => {
-            const response = await readOrders(initialDate, finalDate);
+            const response = await readOrders(/*initialDate, finalDate*/);
 
             setOrdersList(response);
         }
