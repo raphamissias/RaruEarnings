@@ -13,6 +13,6 @@ export interface ITaskOutput {
 export type ITaskOmitId = Omit<ITask, 'id'>
 
 export interface ITaskFormValues {
-    name: string,
-    value: string | unknown
+    name: string;
+    value: string;
 }

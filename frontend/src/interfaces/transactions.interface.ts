@@ -5,3 +5,10 @@ export interface ITransaction {
     isDiscount: boolean;
     date: string;
 }
+
+export interface ITransactionFormValues {
+    name: string;
+    value: number | any;
+    isDiscount: boolean;
+    date: string;
+}
