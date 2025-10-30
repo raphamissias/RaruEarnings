@@ -40,6 +40,8 @@ const Customers = () => {
             <form onSubmit={handleSubmit(createCustomer)} className={style.form}>
                 <input type="text" className={errors.name? style.error : ""} placeholder="Digite o nome do cliente" {...register("name")} />
                 {errors.name ? <p className={style.errorMessage}>{errors.name.message}</p> : null}
+                <input type="text" className={errors.contact? style.error : ""} placeholder="Digite o contato do cliente" {...register("contact")} />
+                {errors.contact ? <p className={style.errorMessage}>{errors.contact.message}</p> : null}
                 <button type="submit">Cadastrar cliente</button>
             </form>
             <DtgCustomers customers={customers}/>
