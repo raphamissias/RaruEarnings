@@ -73,15 +73,15 @@ const OrderItems = ({ items, mode, register, reset }: IOrderItemProps) => {
         const tasks: ITasksSum[] = []
 
         updatedItems.forEach((item) => {
-            const existingItem = tasks.find((i) => i.name === item.task.name);
+            const existingItem: ITasksSum | undefined = tasks.find((i) => i.name === item.task.name);
             if (existingItem) {
                 existingItem.quantity += 1;
-                existingItem.value = existingItem.value + item.task.value;
+                existingItem.value = existingItem.value + Number(item.task.value);
             } else {
                 tasks.push({
                     quantity: 1,
                     name: item.task.name,
-                    value: item.task.value
+                    value: Number(item.task.value)
                 })
             }
         });
