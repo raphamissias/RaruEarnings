@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { group_grayIcon, person_grayIcon, dentistry_grayIcon, palette_grayIcon, date_grayIcon } from "../../../icons";
+import { group_grayIcon, person_grayIcon, dentistry_grayIcon, palette_grayIcon, date_grayIcon } from "../../../assets/icons";
 import type { IOrderFormValues, IOrderOutput } from "../../../interfaces/orders.interface";
 import OrderInput from "./OrderInput";
 import OrderItems from "./OrderItems";

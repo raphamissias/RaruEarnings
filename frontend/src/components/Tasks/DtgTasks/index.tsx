@@ -1,6 +1,6 @@
 import { deleteTask, updateTask } from "../../../database/tasks";
 import style from "./style.module.css";
-import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../icons";
+import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../assets/icons";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";

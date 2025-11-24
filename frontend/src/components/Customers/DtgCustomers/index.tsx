@@ -1,6 +1,6 @@
 import { deleteCustomer, getCustomer, patchCustomer } from "../../../database/customers";
 import style from "./style.module.css"
-import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../icons";
+import { deleteIcon, editIcon, saveIcon, closeIcon, } from "../../../assets/icons";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

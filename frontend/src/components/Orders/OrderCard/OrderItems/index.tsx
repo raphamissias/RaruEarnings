@@ -1,6 +1,6 @@
 import type { IOrderItemOutput } from "../../../../interfaces/orderItems.interface";
 import style from "./style.module.css";
-import { deleteIcon, checkIcon } from "../../../../icons";
+import { deleteIcon, checkIcon } from "../../../../assets/icons";
 import OrderItemInput from "./OrderItemInput";
 import { type UseFormRegister, type UseFormReset } from "react-hook-form";
 import { useContext, useState } from "react";

@@ -2,7 +2,7 @@ import style from "./style.module.css";
 import { DateContext } from "../../contexts/date";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { searchIcon } from "../../icons";
+import { searchIcon } from "../../assets/icons";
 
 interface IDateFormValues {
     initial: string;
