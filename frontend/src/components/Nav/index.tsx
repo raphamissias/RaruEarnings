@@ -1,10 +1,10 @@
 import { useState } from "react";
 import style from "./style.module.css";
 import MenuItem from "./MenuItem";
-import menu from "../../icons/menu.svg";
-import order from "../../icons/order.svg";
-import person from "../../icons/person.svg";
-import dentistry from "../../icons/dentistry.svg";
+import menu from "../../assets/icons/menu.svg";
+import order from "../../assets/icons/order.svg";
+import person from "../../assets/icons/person.svg";
+import dentistry from "../../assets/icons/dentistry.svg";
 
 const Nav = () => {
     const [openedMenu, setOpenedMenu] = useState(false)
